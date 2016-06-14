@@ -63,10 +63,249 @@ void rhombododdyPrimitive::set(float sizeArg, int res) {
 }
 
 ofMesh rhombododdyPrimitive::rhombododdyMesh(float size, int res) {
-  //ofMesh mesh;
-  //mesh.setMode(OF_PRIMITIVE_TRIANGLES);
-  //return mesh;
-  return ofMesh::box(size, size, size, res, res, res);
+  ofMesh mesh;
+  mesh.setMode(OF_PRIMITIVE_TRIANGLES);
+
+  float longDiag = size;
+  float shortDiag = size / sqrt(2);
+  float halfLong = longDiag / 2;
+  float halfShort = shortDiag / sqrt(2) / 2;
+
+  ofVec3f vertex;
+  ofVec2f texCoord;
+  ofVec3f normal;
+
+  std:size_t vertexOffset = 0;
+
+  // FRONT
+  normal.set(0, 0, 1);
+
+  texCoord.x = 0.5;
+  texCoord.y = 1;
+
+  vertex.x = texCoord.x * shortDiag - halfShort;
+  vertex.y = texCoord.y * longDiag - halfLong;
+  vertex.z = halfLong;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 1;
+  texCoord.y = 0.5;
+
+  vertex.x = texCoord.x * shortDiag - halfShort;
+  vertex.y = texCoord.y * longDiag - halfLong;
+  vertex.z = halfLong;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 0.5;
+  texCoord.y = 0;
+
+  vertex.x = texCoord.x * shortDiag - halfShort;
+  vertex.y = texCoord.y * longDiag - halfLong;
+  vertex.z = halfLong;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 0;
+  texCoord.y = 0.5;
+
+  vertex.x = texCoord.x * shortDiag - halfShort;
+  vertex.y = texCoord.y * longDiag - halfLong;
+  vertex.z = halfLong;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  mesh.addIndex(0 + vertexOffset);
+  mesh.addIndex(1 + vertexOffset);
+  mesh.addIndex(3 + vertexOffset);
+
+  mesh.addIndex(1 + vertexOffset);
+  mesh.addIndex(2 + vertexOffset);
+  mesh.addIndex(3 + vertexOffset);
+
+  vertexOffset = mesh.getNumVertices();
+
+  // BACK
+  normal.set(0, 0, -1);
+
+  texCoord.x = 0.5;
+  texCoord.y = 1;
+
+  vertex.x = texCoord.x * shortDiag - halfShort;
+  vertex.y = texCoord.y * longDiag - halfLong;
+  vertex.z = -halfLong;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 1;
+  texCoord.y = 0.5;
+
+  vertex.x = texCoord.x * shortDiag - halfShort;
+  vertex.y = texCoord.y * longDiag - halfLong;
+  vertex.z = -halfLong;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 0.5;
+  texCoord.y = 0;
+
+  vertex.x = texCoord.x * shortDiag - halfShort;
+  vertex.y = texCoord.y * longDiag - halfLong;
+  vertex.z = -halfLong;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 0;
+  texCoord.y = 0.5;
+
+  vertex.x = texCoord.x * shortDiag - halfShort;
+  vertex.y = texCoord.y * longDiag - halfLong;
+  vertex.z = -halfLong;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  mesh.addIndex(0 + vertexOffset);
+  mesh.addIndex(1 + vertexOffset);
+  mesh.addIndex(3 + vertexOffset);
+
+  mesh.addIndex(1 + vertexOffset);
+  mesh.addIndex(2 + vertexOffset);
+  mesh.addIndex(3 + vertexOffset);
+
+  vertexOffset = mesh.getNumVertices();
+
+  // TOP
+  normal.set(0, 1, 0);
+
+  texCoord.x = 0.5;
+  texCoord.y = 1;
+
+  vertex.x = texCoord.x * shortDiag - halfShort;
+  vertex.y = halfLong;
+  vertex.z = texCoord.y * longDiag - halfLong;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 1;
+  texCoord.y = 0.5;
+
+  vertex.x = texCoord.x * shortDiag - halfShort;
+  vertex.y = halfLong;
+  vertex.z = texCoord.y * longDiag - halfLong;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 0.5;
+  texCoord.y = 0;
+
+  vertex.x = texCoord.x * shortDiag - halfShort;
+  vertex.y = halfLong;
+  vertex.z = texCoord.y * longDiag - halfLong;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 0;
+  texCoord.y = 0.5;
+
+  vertex.x = texCoord.x * shortDiag - halfShort;
+  vertex.y = halfLong;
+  vertex.z = texCoord.y * longDiag - halfLong;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  mesh.addIndex(0 + vertexOffset);
+  mesh.addIndex(1 + vertexOffset);
+  mesh.addIndex(3 + vertexOffset);
+
+  mesh.addIndex(1 + vertexOffset);
+  mesh.addIndex(2 + vertexOffset);
+  mesh.addIndex(3 + vertexOffset);
+
+  vertexOffset = mesh.getNumVertices();
+
+  // BOTTOM
+  normal.set(0, -1, 0);
+
+  texCoord.x = 0.5;
+  texCoord.y = 1;
+
+  vertex.x = texCoord.x * shortDiag - halfShort;
+  vertex.y = -halfLong;
+  vertex.z = texCoord.y * longDiag - halfLong;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 1;
+  texCoord.y = 0.5;
+
+  vertex.x = texCoord.x * shortDiag - halfShort;
+  vertex.y = -halfLong;
+  vertex.z = texCoord.y * longDiag - halfLong;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 0.5;
+  texCoord.y = 0;
+
+  vertex.x = texCoord.x * shortDiag - halfShort;
+  vertex.y = -halfLong;
+  vertex.z = texCoord.y * longDiag - halfLong;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 0;
+  texCoord.y = 0.5;
+
+  vertex.x = texCoord.x * shortDiag - halfShort;
+  vertex.y = -halfLong;
+  vertex.z = texCoord.y * longDiag - halfLong;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  mesh.addIndex(0 + vertexOffset);
+  mesh.addIndex(1 + vertexOffset);
+  mesh.addIndex(3 + vertexOffset);
+
+  mesh.addIndex(1 + vertexOffset);
+  mesh.addIndex(2 + vertexOffset);
+  mesh.addIndex(3 + vertexOffset);
+
+  vertexOffset = mesh.getNumVertices();
+
+  return mesh;
 }
 
 void rhombododdyPrimitive::set(float sizeArg) {
