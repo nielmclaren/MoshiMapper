@@ -1,0 +1,155 @@
+#include "ofApp.h"
+
+/*
+	rotateToNormal will rotate everything using ofRotate. the rotation amount
+	and axis are generated using an ofQuaternion. the trick is to use ofQuaternion
+	to determine the rotation that is required from a standard axis (0,0,1) to the
+	desired normal vector, then apply that rotation.
+ */
+//--------------------------------------------------------------
+void rotateToNormal(ofVec3f normal) {
+    normal.normalize();
+
+    float rotationAmount;
+    ofVec3f rotationAngle;
+    ofQuaternion rotation;
+
+    ofVec3f axis(0, 0, 1);
+    rotation.makeRotate(axis, normal);
+    rotation.getRotate(rotationAmount, rotationAngle);
+    ofRotate(rotationAmount, rotationAngle.x, rotationAngle.y, rotationAngle.z);
+}
+
+//--------------------------------------------------------------
+void ofApp::setup(){
+    ofSetVerticalSync(true);
+
+    sphere.setRadius(200);
+    ofSetSphereResolution(24);
+
+    setupLighting();
+    setupMaterial();
+}
+
+void ofApp::setupLighting() {
+    ofSetSmoothLighting(true);
+    pointLight.setDiffuseColor(ofFloatColor(.85, .85, .55));
+    pointLight.setSpecularColor(ofFloatColor(1.f, 1.f, 1.f));
+
+    pointLight2.setDiffuseColor(ofFloatColor( 238.f/255.f, 57.f/255.f, 135.f/255.f));
+    pointLight2.setSpecularColor(ofFloatColor(.8f, .8f, .9f));
+
+    pointLight3.setDiffuseColor(ofFloatColor(19.f/255.f,94.f/255.f,77.f/255.f));
+    pointLight3.setSpecularColor(ofFloatColor(18.f/255.f,150.f/255.f,135.f/255.f));
+}
+
+void ofApp::setupMaterial() {
+    // shininess is a value between 0 - 128, 128 being the most shiny //
+    material.setShininess( 120 );
+    // the light highlight of the material //
+    material.setSpecularColor(ofColor(255, 255, 255, 255));
+}
+
+//--------------------------------------------------------------
+void ofApp::update(){
+    int w = ofGetWidth();
+    int h = ofGetHeight();
+    float t = ofGetElapsedTimef();
+
+    pointLight.setPosition((w*.5)+ cos(t*.5)*(w*.3), h/2, 500);
+    pointLight2.setPosition((w*.5)+ cos(t*.15)*(w*.3), h*.5 + sin(t*.7)*(h), -300);
+    pointLight3.setPosition(cos(t*1.5) * w*.5, sin(t*1.5f) * w*.5, cos(t*.2) * w);
+}
+
+//--------------------------------------------------------------
+void ofApp::draw(){
+    ofColor cyan = ofColor::fromHex(0x00abec);
+    ofColor magenta = ofColor::fromHex(0xec008c);
+    ofColor yellow = ofColor::fromHex(0xffee00);
+
+    ofBackgroundGradient(magenta * .6, magenta * .4);
+    ofNoFill();
+
+    ofEnableDepthTest();
+
+    ofEnableLighting();
+    pointLight.enable();
+    pointLight2.enable();
+    pointLight3.enable();
+
+    easyCam.begin();
+    ofRotateX(15);
+
+    ofSetColor(0);
+    ofDrawGrid(500, 10, false, false, true, false);
+
+    ofSetColor(magenta);
+    drawSphere();
+
+    easyCam.end();
+}
+
+void ofApp::drawSphere() {
+    material.begin();
+
+    sphere.setPosition(0, 0, 0);
+    sphere.setMode( OF_PRIMITIVE_TRIANGLES );
+    sphere.draw();
+
+    material.end();
+}
+
+//--------------------------------------------------------------
+void ofApp::keyPressed(int key){
+
+}
+
+//--------------------------------------------------------------
+void ofApp::keyReleased(int key){
+
+}
+
+//--------------------------------------------------------------
+void ofApp::mouseMoved(int x, int y){
+
+}
+
+//--------------------------------------------------------------
+void ofApp::mouseDragged(int x, int y, int button){
+
+}
+
+//--------------------------------------------------------------
+void ofApp::mousePressed(int x, int y, int button){
+
+}
+
+//--------------------------------------------------------------
+void ofApp::mouseReleased(int x, int y, int button){
+
+}
+
+//--------------------------------------------------------------
+void ofApp::mouseEntered(int x, int y){
+
+}
+
+//--------------------------------------------------------------
+void ofApp::mouseExited(int x, int y){
+
+}
+
+//--------------------------------------------------------------
+void ofApp::windowResized(int w, int h){
+
+}
+
+//--------------------------------------------------------------
+void ofApp::gotMessage(ofMessage msg){
+
+}
+
+//--------------------------------------------------------------
+void ofApp::dragEvent(ofDragInfo dragInfo){
+
+}
