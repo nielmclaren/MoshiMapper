@@ -24,8 +24,7 @@ void rotateToNormal(ofVec3f normal) {
 void ofApp::setup(){
     ofSetVerticalSync(true);
 
-    sphere.setRadius(200);
-    ofSetSphereResolution(24);
+    rhombododdy.set(200, 2);
 
     setupLighting();
     setupMaterial();
@@ -84,17 +83,17 @@ void ofApp::draw(){
     ofDrawGrid(500, 10, false, false, true, false);
 
     ofSetColor(magenta);
-    drawSphere();
+    drawRhombododdy();
 
     easyCam.end();
 }
 
-void ofApp::drawSphere() {
+void ofApp::drawRhombododdy() {
     material.begin();
 
-    sphere.setPosition(0, 0, 0);
-    sphere.setMode( OF_PRIMITIVE_TRIANGLES );
-    sphere.draw();
+    rhombododdy.setPosition(0, 0, 0);
+    rhombododdy.setMode(OF_PRIMITIVE_TRIANGLES);
+    rhombododdy.draw();
 
     material.end();
 }

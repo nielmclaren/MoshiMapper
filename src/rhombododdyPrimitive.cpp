@@ -1,0 +1,114 @@
+
+#include "rhombododdyPrimitive.h"
+
+rhombododdyPrimitive::rhombododdyPrimitive() {
+    texCoords = ofVec4f(0,0,1,1);
+    set(100, 2);
+}
+
+rhombododdyPrimitive::rhombododdyPrimitive(float size, int res) {
+    texCoords = ofVec4f(0,0,1,1);
+    set(size, res);
+}
+
+rhombododdyPrimitive::~rhombododdyPrimitive() {}
+
+void rhombododdyPrimitive::set(float sizeArg, int res) {
+    size = sizeArg;
+    resolution = res;
+
+    int resX = res;
+    int resY = res;
+    int resZ = res;
+
+    //FRONT, resY, resX
+    strides[ SIDE_FRONT ][0] = 0;
+    strides[ SIDE_FRONT ][1] = (resY)*(resX)*6;
+    vertices[SIDE_FRONT][0] = 0;
+    vertices[SIDE_FRONT][1] = (resX+1) * (resY+1);
+
+    //RIGHT, resY, resZ
+    strides[ SIDE_RIGHT ][0] = strides[ SIDE_FRONT ][0] + strides[ SIDE_FRONT ][1];
+    strides[ SIDE_RIGHT ][1] = (resY)*(resZ)*6;
+    vertices[SIDE_RIGHT][0] = vertices[SIDE_FRONT][0] + vertices[SIDE_FRONT][1];
+    vertices[SIDE_RIGHT][1] = (resY+1) * (resZ+1);
+
+    //LEFT, resY, resZ
+    strides[ SIDE_LEFT ][0] = strides[ SIDE_RIGHT ][0] + strides[ SIDE_RIGHT ][1];
+    strides[ SIDE_LEFT ][1] = (resY)*(resZ)*6;
+    vertices[SIDE_LEFT][0] = vertices[SIDE_RIGHT][0] + vertices[SIDE_RIGHT][1];
+    vertices[SIDE_LEFT][1] = (resY+1) * (resZ+1);
+
+    //BACK, resY, resX
+    strides[ SIDE_BACK ][0] = strides[ SIDE_LEFT ][0] + strides[ SIDE_LEFT ][1];
+    strides[ SIDE_BACK ][1] = (resY)*(resX)*6;
+    vertices[SIDE_BACK][0] = vertices[SIDE_LEFT][0] + vertices[SIDE_LEFT][1];
+    vertices[SIDE_BACK][1] = (resY+1) * (resZ+1);
+
+    //TOP, resZ, resX
+    strides[ SIDE_TOP ][0] = strides[ SIDE_BACK ][0] + strides[ SIDE_BACK ][1];
+    strides[ SIDE_TOP ][1] = (resZ)*(resX)*6;
+    vertices[SIDE_TOP][0] = vertices[SIDE_BACK][0] + vertices[SIDE_BACK][1];
+    vertices[SIDE_TOP][1] = (resY+1) * (resZ+1);
+
+    //BOTTOM, resZ, resX
+    strides[ SIDE_BOTTOM ][0] = strides[ SIDE_TOP ][0]+strides[ SIDE_TOP ][1];
+    strides[ SIDE_BOTTOM ][1] = (resZ)*(resX)*6;
+    vertices[SIDE_BOTTOM][0] = vertices[SIDE_TOP][0] + vertices[SIDE_TOP][1];
+    vertices[SIDE_BOTTOM][1] = (resY+1) * (resZ+1);
+
+    getMesh() = rhombododdyMesh(size, resolution);
+
+    normalizeAndApplySavedTexCoords();
+}
+
+ofMesh rhombododdyPrimitive::rhombododdyMesh(float size, int res) {
+  //ofMesh mesh;
+  //mesh.setMode(OF_PRIMITIVE_TRIANGLES);
+  //return mesh;
+  return ofMesh::box(size, size, size, res, res, res);
+}
+
+void rhombododdyPrimitive::set(float sizeArg) {
+    set(sizeArg, resolution);
+}
+
+vector<ofIndexType> rhombododdyPrimitive::getSideIndices( int sideIndex ) const {
+  if(sideIndex < 0 || sideIndex >= SIDES_TOTAL) {
+    ofLogWarning("rhombododdyPrimitive") << "getSideIndices(): faceIndex out of bounds, returning SIDE_FRONT";
+    sideIndex = SIDE_FRONT;
+  }
+
+  return getIndices(strides[sideIndex][0], strides[sideIndex][0] + strides[sideIndex][1]);
+}
+
+ofMesh rhombododdyPrimitive::getSideMesh(int sideIndex) const {
+  if(sideIndex < 0 || sideIndex > SIDES_TOTAL) {
+    ofLogWarning("rhombododdyPrimitive") << "getSideMesh(): faceIndex out of bounds, using SIDE_FRONT";
+    sideIndex = SIDE_FRONT;
+  }
+  int startIndex  = strides[sideIndex][0];
+  int endIndex    = startIndex+strides[sideIndex][1];
+
+  int startVertIndex  = vertices[sideIndex][0];
+  int endVertIndex    = startVertIndex + vertices[sideIndex][1];
+
+  return getMesh().getMeshForIndices( startIndex, endIndex, startVertIndex, endVertIndex );
+}
+
+void rhombododdyPrimitive::setResolution(int res) {
+  resolution = res;
+}
+
+void rhombododdyPrimitive::setMode( ofPrimitiveMode mode ) {
+    // only supports triangles //
+    setResolution(resolution);
+}
+
+int rhombododdyPrimitive::getResolution() const {
+  return resolution;
+}
+
+float rhombododdyPrimitive::getSize() const {
+    return size;
+}

@@ -1,18 +1,19 @@
 #pragma once
 
 #include "ofMain.h"
+#include "rhombododdyPrimitive.h"
 
 class ofApp : public ofBaseApp{
 public:
     void setup();
     void setupLighting();
     void setupMaterial();
-    
+
     void update();
-    
+
     void draw();
-    void drawSphere();
-    
+    void drawRhombododdy();
+
     void keyPressed(int key);
     void keyReleased(int key);
     void mouseMoved(int x, int y);
@@ -24,12 +25,12 @@ public:
     void windowResized(int w, int h);
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
-    
+
     ofEasyCam easyCam;
-    
-    ofSpherePrimitive sphere;
+
+    rhombododdyPrimitive rhombododdy;
     vector<ofMeshFace> triangles;
-    
+
     ofLight pointLight;
     ofLight pointLight2;
     ofLight pointLight3;
