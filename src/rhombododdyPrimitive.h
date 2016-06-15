@@ -5,14 +5,7 @@
 class rhombododdyPrimitive : public of3dPrimitive {
 public:
 
-    enum RhombododdySides {
-      SIDE_FRONT,
-      SIDE_RIGHT,
-      SIDE_LEFT,
-      SIDE_BACK,
-      SIDE_TOP,
-      SIDE_BOTTOM,
-      /*
+    enum Faces {
       SIDE_TOP,
       SIDE_BOTTOM,
       SIDE_FRONT,
@@ -25,7 +18,6 @@ public:
       SIDE_LEFT_BOTTOM_BACK,
       SIDE_RIGHT_TOP_BACK,
       SIDE_RIGHT_BOTTOM_BACK,
-      */
       SIDES_TOTAL
     };
 

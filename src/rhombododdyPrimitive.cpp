@@ -69,7 +69,7 @@ ofMesh rhombododdyPrimitive::rhombododdyMesh(float size, int res) {
   float longDiag = size;
   float shortDiag = size / sqrt(2);
   float halfLong = longDiag / 2;
-  float halfShort = shortDiag / sqrt(2) / 2;
+  float halfShort = shortDiag / 2;
 
   ofVec3f vertex;
   ofVec2f texCoord;
@@ -83,8 +83,8 @@ ofMesh rhombododdyPrimitive::rhombododdyMesh(float size, int res) {
   texCoord.x = 0.5;
   texCoord.y = 1;
 
-  vertex.x = texCoord.x * shortDiag - halfShort;
-  vertex.y = texCoord.y * longDiag - halfLong;
+  vertex.x = 0;
+  vertex.y = halfLong;
   vertex.z = halfLong;
 
   mesh.addVertex(vertex);
@@ -94,8 +94,8 @@ ofMesh rhombododdyPrimitive::rhombododdyMesh(float size, int res) {
   texCoord.x = 1;
   texCoord.y = 0.5;
 
-  vertex.x = texCoord.x * shortDiag - halfShort;
-  vertex.y = texCoord.y * longDiag - halfLong;
+  vertex.x = halfShort;
+  vertex.y = 0;
   vertex.z = halfLong;
 
   mesh.addVertex(vertex);
@@ -105,8 +105,8 @@ ofMesh rhombododdyPrimitive::rhombododdyMesh(float size, int res) {
   texCoord.x = 0.5;
   texCoord.y = 0;
 
-  vertex.x = texCoord.x * shortDiag - halfShort;
-  vertex.y = texCoord.y * longDiag - halfLong;
+  vertex.x = 0;
+  vertex.y = -halfLong;
   vertex.z = halfLong;
 
   mesh.addVertex(vertex);
@@ -116,8 +116,8 @@ ofMesh rhombododdyPrimitive::rhombododdyMesh(float size, int res) {
   texCoord.x = 0;
   texCoord.y = 0.5;
 
-  vertex.x = texCoord.x * shortDiag - halfShort;
-  vertex.y = texCoord.y * longDiag - halfLong;
+  vertex.x = -halfShort;
+  vertex.y = 0;
   vertex.z = halfLong;
 
   mesh.addVertex(vertex);
@@ -140,8 +140,8 @@ ofMesh rhombododdyPrimitive::rhombododdyMesh(float size, int res) {
   texCoord.x = 0.5;
   texCoord.y = 1;
 
-  vertex.x = texCoord.x * shortDiag - halfShort;
-  vertex.y = texCoord.y * longDiag - halfLong;
+  vertex.x = 0;
+  vertex.y = halfLong;
   vertex.z = -halfLong;
 
   mesh.addVertex(vertex);
@@ -151,8 +151,8 @@ ofMesh rhombododdyPrimitive::rhombododdyMesh(float size, int res) {
   texCoord.x = 1;
   texCoord.y = 0.5;
 
-  vertex.x = texCoord.x * shortDiag - halfShort;
-  vertex.y = texCoord.y * longDiag - halfLong;
+  vertex.x = halfShort;
+  vertex.y = 0;
   vertex.z = -halfLong;
 
   mesh.addVertex(vertex);
@@ -162,8 +162,8 @@ ofMesh rhombododdyPrimitive::rhombododdyMesh(float size, int res) {
   texCoord.x = 0.5;
   texCoord.y = 0;
 
-  vertex.x = texCoord.x * shortDiag - halfShort;
-  vertex.y = texCoord.y * longDiag - halfLong;
+  vertex.x = 0;
+  vertex.y = -halfLong;
   vertex.z = -halfLong;
 
   mesh.addVertex(vertex);
@@ -173,8 +173,8 @@ ofMesh rhombododdyPrimitive::rhombododdyMesh(float size, int res) {
   texCoord.x = 0;
   texCoord.y = 0.5;
 
-  vertex.x = texCoord.x * shortDiag - halfShort;
-  vertex.y = texCoord.y * longDiag - halfLong;
+  vertex.x = -halfShort;
+  vertex.y = 0;
   vertex.z = -halfLong;
 
   mesh.addVertex(vertex);
@@ -197,9 +197,9 @@ ofMesh rhombododdyPrimitive::rhombododdyMesh(float size, int res) {
   texCoord.x = 0.5;
   texCoord.y = 1;
 
-  vertex.x = texCoord.x * shortDiag - halfShort;
+  vertex.x = 0;
   vertex.y = halfLong;
-  vertex.z = texCoord.y * longDiag - halfLong;
+  vertex.z = halfLong;
 
   mesh.addVertex(vertex);
   mesh.addTexCoord(texCoord);
@@ -208,9 +208,9 @@ ofMesh rhombododdyPrimitive::rhombododdyMesh(float size, int res) {
   texCoord.x = 1;
   texCoord.y = 0.5;
 
-  vertex.x = texCoord.x * shortDiag - halfShort;
+  vertex.x = halfShort;
   vertex.y = halfLong;
-  vertex.z = texCoord.y * longDiag - halfLong;
+  vertex.z = 0;
 
   mesh.addVertex(vertex);
   mesh.addTexCoord(texCoord);
@@ -219,9 +219,9 @@ ofMesh rhombododdyPrimitive::rhombododdyMesh(float size, int res) {
   texCoord.x = 0.5;
   texCoord.y = 0;
 
-  vertex.x = texCoord.x * shortDiag - halfShort;
+  vertex.x = 0;
   vertex.y = halfLong;
-  vertex.z = texCoord.y * longDiag - halfLong;
+  vertex.z = -halfLong;
 
   mesh.addVertex(vertex);
   mesh.addTexCoord(texCoord);
@@ -230,9 +230,9 @@ ofMesh rhombododdyPrimitive::rhombododdyMesh(float size, int res) {
   texCoord.x = 0;
   texCoord.y = 0.5;
 
-  vertex.x = texCoord.x * shortDiag - halfShort;
+  vertex.x = -halfShort;
   vertex.y = halfLong;
-  vertex.z = texCoord.y * longDiag - halfLong;
+  vertex.z = 0;
 
   mesh.addVertex(vertex);
   mesh.addTexCoord(texCoord);
@@ -254,9 +254,9 @@ ofMesh rhombododdyPrimitive::rhombododdyMesh(float size, int res) {
   texCoord.x = 0.5;
   texCoord.y = 1;
 
-  vertex.x = texCoord.x * shortDiag - halfShort;
+  vertex.x = 0;
   vertex.y = -halfLong;
-  vertex.z = texCoord.y * longDiag - halfLong;
+  vertex.z = halfLong;
 
   mesh.addVertex(vertex);
   mesh.addTexCoord(texCoord);
@@ -265,9 +265,9 @@ ofMesh rhombododdyPrimitive::rhombododdyMesh(float size, int res) {
   texCoord.x = 1;
   texCoord.y = 0.5;
 
-  vertex.x = texCoord.x * shortDiag - halfShort;
+  vertex.x = halfShort;
   vertex.y = -halfLong;
-  vertex.z = texCoord.y * longDiag - halfLong;
+  vertex.z = 0;
 
   mesh.addVertex(vertex);
   mesh.addTexCoord(texCoord);
@@ -276,9 +276,9 @@ ofMesh rhombododdyPrimitive::rhombododdyMesh(float size, int res) {
   texCoord.x = 0.5;
   texCoord.y = 0;
 
-  vertex.x = texCoord.x * shortDiag - halfShort;
+  vertex.x = 0;
   vertex.y = -halfLong;
-  vertex.z = texCoord.y * longDiag - halfLong;
+  vertex.z = -halfLong;
 
   mesh.addVertex(vertex);
   mesh.addTexCoord(texCoord);
@@ -287,9 +287,465 @@ ofMesh rhombododdyPrimitive::rhombododdyMesh(float size, int res) {
   texCoord.x = 0;
   texCoord.y = 0.5;
 
-  vertex.x = texCoord.x * shortDiag - halfShort;
+  vertex.x = -halfShort;
   vertex.y = -halfLong;
-  vertex.z = texCoord.y * longDiag - halfLong;
+  vertex.z = 0;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  mesh.addIndex(0 + vertexOffset);
+  mesh.addIndex(1 + vertexOffset);
+  mesh.addIndex(3 + vertexOffset);
+
+  mesh.addIndex(1 + vertexOffset);
+  mesh.addIndex(2 + vertexOffset);
+  mesh.addIndex(3 + vertexOffset);
+
+  vertexOffset = mesh.getNumVertices();
+
+  // LEFT TOP FRONT
+  normal.set(-1/sqrt(2), 0.5, 0.5);
+
+  texCoord.x = 0.5;
+  texCoord.y = 1;
+
+  vertex.x = 0;
+  vertex.y = halfLong;
+  vertex.z = halfLong;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 1;
+  texCoord.y = 0.5;
+
+  vertex.x = -halfShort;
+  vertex.y = halfLong;
+  vertex.z = 0;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 0.5;
+  texCoord.y = 0;
+
+  vertex.x = -2 * halfShort;
+  vertex.y = 0;
+  vertex.z = 0;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 0;
+  texCoord.y = 0.5;
+
+  vertex.x = -halfShort;
+  vertex.y = 0;
+  vertex.z = halfLong;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  mesh.addIndex(0 + vertexOffset);
+  mesh.addIndex(1 + vertexOffset);
+  mesh.addIndex(3 + vertexOffset);
+
+  mesh.addIndex(1 + vertexOffset);
+  mesh.addIndex(2 + vertexOffset);
+  mesh.addIndex(3 + vertexOffset);
+
+  vertexOffset = mesh.getNumVertices();
+
+  // LEFT TOP BACK
+  normal.set(-1/sqrt(2), 0.5, -0.5);
+
+  texCoord.x = 0.5;
+  texCoord.y = 1;
+
+  vertex.x = 0;
+  vertex.y = halfLong;
+  vertex.z = -halfLong;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 1;
+  texCoord.y = 0.5;
+
+  vertex.x = -halfShort;
+  vertex.y = halfLong;
+  vertex.z = 0;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 0.5;
+  texCoord.y = 0;
+
+  vertex.x = -2 * halfShort;
+  vertex.y = 0;
+  vertex.z = 0;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 0;
+  texCoord.y = 0.5;
+
+  vertex.x = -halfShort;
+  vertex.y = 0;
+  vertex.z = -halfLong;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  mesh.addIndex(0 + vertexOffset);
+  mesh.addIndex(1 + vertexOffset);
+  mesh.addIndex(3 + vertexOffset);
+
+  mesh.addIndex(1 + vertexOffset);
+  mesh.addIndex(2 + vertexOffset);
+  mesh.addIndex(3 + vertexOffset);
+
+  vertexOffset = mesh.getNumVertices();
+
+  // LEFT BOTTOM FRONT
+  normal.set(-1/sqrt(2), -0.5, 0.5);
+
+  texCoord.x = 0.5;
+  texCoord.y = 1;
+
+  vertex.x = 0;
+  vertex.y = -halfLong;
+  vertex.z = halfLong;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 1;
+  texCoord.y = 0.5;
+
+  vertex.x = -halfShort;
+  vertex.y = -halfLong;
+  vertex.z = 0;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 0.5;
+  texCoord.y = 0;
+
+  vertex.x = -2 * halfShort;
+  vertex.y = 0;
+  vertex.z = 0;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 0;
+  texCoord.y = 0.5;
+
+  vertex.x = -halfShort;
+  vertex.y = 0;
+  vertex.z = halfLong;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  mesh.addIndex(0 + vertexOffset);
+  mesh.addIndex(1 + vertexOffset);
+  mesh.addIndex(3 + vertexOffset);
+
+  mesh.addIndex(1 + vertexOffset);
+  mesh.addIndex(2 + vertexOffset);
+  mesh.addIndex(3 + vertexOffset);
+
+  vertexOffset = mesh.getNumVertices();
+
+  // LEFT BOTTOM BACK
+  normal.set(-1/sqrt(2), -0.5, -0.5);
+
+  texCoord.x = 0.5;
+  texCoord.y = 1;
+
+  vertex.x = 0;
+  vertex.y = -halfLong;
+  vertex.z = -halfLong;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 1;
+  texCoord.y = 0.5;
+
+  vertex.x = -halfShort;
+  vertex.y = -halfLong;
+  vertex.z = 0;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 0.5;
+  texCoord.y = 0;
+
+  vertex.x = -2 * halfShort;
+  vertex.y = 0;
+  vertex.z = 0;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 0;
+  texCoord.y = 0.5;
+
+  vertex.x = -halfShort;
+  vertex.y = 0;
+  vertex.z = -halfLong;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  mesh.addIndex(0 + vertexOffset);
+  mesh.addIndex(1 + vertexOffset);
+  mesh.addIndex(3 + vertexOffset);
+
+  mesh.addIndex(1 + vertexOffset);
+  mesh.addIndex(2 + vertexOffset);
+  mesh.addIndex(3 + vertexOffset);
+
+  vertexOffset = mesh.getNumVertices();
+
+  // RIGHT TOP FRONT
+  normal.set(1/sqrt(2), 0.5, 0.5);
+
+  texCoord.x = 0.5;
+  texCoord.y = 1;
+
+  vertex.x = 0;
+  vertex.y = halfLong;
+  vertex.z = halfLong;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 1;
+  texCoord.y = 0.5;
+
+  vertex.x = halfShort;
+  vertex.y = halfLong;
+  vertex.z = 0;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 0.5;
+  texCoord.y = 0;
+
+  vertex.x = 2 * halfShort;
+  vertex.y = 0;
+  vertex.z = 0;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 0;
+  texCoord.y = 0.5;
+
+  vertex.x = halfShort;
+  vertex.y = 0;
+  vertex.z = halfLong;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  mesh.addIndex(0 + vertexOffset);
+  mesh.addIndex(1 + vertexOffset);
+  mesh.addIndex(3 + vertexOffset);
+
+  mesh.addIndex(1 + vertexOffset);
+  mesh.addIndex(2 + vertexOffset);
+  mesh.addIndex(3 + vertexOffset);
+
+  vertexOffset = mesh.getNumVertices();
+
+  // RIGHT TOP BACK
+  normal.set(1/sqrt(2), 0.5, -0.5);
+
+  texCoord.x = 0.5;
+  texCoord.y = 1;
+
+  vertex.x = 0;
+  vertex.y = halfLong;
+  vertex.z = -halfLong;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 1;
+  texCoord.y = 0.5;
+
+  vertex.x = halfShort;
+  vertex.y = halfLong;
+  vertex.z = 0;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 0.5;
+  texCoord.y = 0;
+
+  vertex.x = 2 * halfShort;
+  vertex.y = 0;
+  vertex.z = 0;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 0;
+  texCoord.y = 0.5;
+
+  vertex.x = halfShort;
+  vertex.y = 0;
+  vertex.z = -halfLong;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  mesh.addIndex(0 + vertexOffset);
+  mesh.addIndex(1 + vertexOffset);
+  mesh.addIndex(3 + vertexOffset);
+
+  mesh.addIndex(1 + vertexOffset);
+  mesh.addIndex(2 + vertexOffset);
+  mesh.addIndex(3 + vertexOffset);
+
+  vertexOffset = mesh.getNumVertices();
+
+  // RIGHT BOTTOM FRONT
+  normal.set(1/sqrt(2), -0.5, 0.5);
+
+  texCoord.x = 0.5;
+  texCoord.y = 1;
+
+  vertex.x = 0;
+  vertex.y = -halfLong;
+  vertex.z = halfLong;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 1;
+  texCoord.y = 0.5;
+
+  vertex.x = halfShort;
+  vertex.y = -halfLong;
+  vertex.z = 0;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 0.5;
+  texCoord.y = 0;
+
+  vertex.x = 2 * halfShort;
+  vertex.y = 0;
+  vertex.z = 0;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 0;
+  texCoord.y = 0.5;
+
+  vertex.x = halfShort;
+  vertex.y = 0;
+  vertex.z = halfLong;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  mesh.addIndex(0 + vertexOffset);
+  mesh.addIndex(1 + vertexOffset);
+  mesh.addIndex(3 + vertexOffset);
+
+  mesh.addIndex(1 + vertexOffset);
+  mesh.addIndex(2 + vertexOffset);
+  mesh.addIndex(3 + vertexOffset);
+
+  vertexOffset = mesh.getNumVertices();
+
+  // RIGHT BOTTOM BACK
+  normal.set(1/sqrt(2), -0.5, -0.5);
+
+  texCoord.x = 0.5;
+  texCoord.y = 1;
+
+  vertex.x = 0;
+  vertex.y = -halfLong;
+  vertex.z = -halfLong;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 1;
+  texCoord.y = 0.5;
+
+  vertex.x = halfShort;
+  vertex.y = -halfLong;
+  vertex.z = 0;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 0.5;
+  texCoord.y = 0;
+
+  vertex.x = 2 * halfShort;
+  vertex.y = 0;
+  vertex.z = 0;
+
+  mesh.addVertex(vertex);
+  mesh.addTexCoord(texCoord);
+  mesh.addNormal(normal);
+
+  texCoord.x = 0;
+  texCoord.y = 0.5;
+
+  vertex.x = halfShort;
+  vertex.y = 0;
+  vertex.z = -halfLong;
 
   mesh.addVertex(vertex);
   mesh.addTexCoord(texCoord);

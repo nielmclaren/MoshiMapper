@@ -1,18 +1,19 @@
 #pragma once
 
 #include "ofMain.h"
-#include "rhombododdyPrimitive.h"
+#include "rhombododdyLattice.h"
 
-class ofApp : public ofBaseApp{
+class ofApp : public ofBaseApp {
 public:
     void setup();
     void setupLighting();
     void setupMaterial();
+    void setupLattice();
 
     void update();
 
     void draw();
-    void drawRhombododdy();
+    void drawLattice();
 
     void keyPressed(int key);
     void keyReleased(int key);
@@ -28,11 +29,11 @@ public:
 
     ofEasyCam easyCam;
 
-    rhombododdyPrimitive rhombododdy;
-    vector<ofMeshFace> triangles;
+    RhombododdyLattice lattice;
 
     ofLight pointLight;
     ofLight pointLight2;
     ofLight pointLight3;
     ofMaterial material;
 };
+

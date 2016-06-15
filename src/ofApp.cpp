@@ -24,10 +24,9 @@ void rotateToNormal(ofVec3f normal) {
 void ofApp::setup(){
     ofSetVerticalSync(true);
 
-    rhombododdy.set(200, 2);
-
     setupLighting();
     setupMaterial();
+    setupLattice();
 }
 
 void ofApp::setupLighting() {
@@ -47,6 +46,42 @@ void ofApp::setupMaterial() {
     material.setShininess( 120 );
     // the light highlight of the material //
     material.setSpecularColor(ofColor(255, 255, 255, 255));
+}
+
+void ofApp::setupLattice() {
+    lattice.setSize(50);
+
+    lattice.setPosition(2, 0, 1, true);
+    lattice.setPosition(1, 0, 2, true);
+    lattice.setPosition(2, 0, 2, true);
+    lattice.setPosition(1, 0, 3, true);
+
+    lattice.setPosition(1, 1, 0, true);
+    lattice.setPosition(0, 1, 1, true);
+    lattice.setPosition(1, 1, 1, true);
+    lattice.setPosition(2, 1, 1, true);
+    lattice.setPosition(0, 1, 2, true);
+    lattice.setPosition(1, 1, 2, true);
+    lattice.setPosition(2, 1, 2, true);
+    lattice.setPosition(1, 1, 3, true);
+
+    lattice.setPosition(1, 2, 0, true);
+    lattice.setPosition(2, 2, 0, true);
+    lattice.setPosition(0, 2, 1, true);
+    lattice.setPosition(1, 2, 1, true);
+    lattice.setPosition(3, 2, 1, true);
+    lattice.setPosition(0, 2, 2, true);
+    lattice.setPosition(3, 2, 2, true);
+    lattice.setPosition(2, 2, 3, true);
+    lattice.setPosition(1, 2, 4, true);
+    lattice.setPosition(2, 2, 4, true);
+
+    lattice.setPosition(0, 3, 0, true);
+    lattice.setPosition(2, 3, 0, true);
+    lattice.setPosition(0, 3, 2, true);
+    lattice.setPosition(3, 3, 2, true);
+    lattice.setPosition(0, 3, 3, true);
+    lattice.setPosition(1, 3, 3, true);
 }
 
 //--------------------------------------------------------------
@@ -83,17 +118,15 @@ void ofApp::draw(){
     ofDrawGrid(500, 10, false, false, true, false);
 
     ofSetColor(magenta);
-    drawRhombododdy();
+    drawLattice();
 
     easyCam.end();
 }
 
-void ofApp::drawRhombododdy() {
+void ofApp::drawLattice() {
     material.begin();
 
-    rhombododdy.setPosition(0, 0, 0);
-    rhombododdy.setMode(OF_PRIMITIVE_TRIANGLES);
-    rhombododdy.draw();
+    lattice.draw();
 
     material.end();
 }
