@@ -1,7 +1,7 @@
 
 #include "ofGraphics.h"
-#include "latticePosition.h"
-#include "rhombododdyPrimitive.h"
+#include "LatticePosition.h"
+#include "RhombododdyPrimitive.h"
 
 class RhombododdyLattice {
 public:
@@ -17,10 +17,9 @@ public:
 
 protected:
     void drawRhombododdy(LatticePosition* p);
-
-    rhombododdyPrimitive rhombododdy;
-
     int getIndexOfPosition(int x, int y, int z);
+
+    RhombododdyPrimitive rhombododdy;
 
     float size;
     std::vector<LatticePosition*> positions;

@@ -2,7 +2,7 @@
 #include "ofGraphics.h"
 #include "of3dPrimitives.h"
 
-class rhombododdyPrimitive : public of3dPrimitive {
+class RhombododdyPrimitive : public of3dPrimitive {
 public:
 
     enum Faces {
@@ -21,9 +21,9 @@ public:
       SIDES_TOTAL
     };
 
-    rhombododdyPrimitive();
-    rhombododdyPrimitive(float size, int res);
-    ~rhombododdyPrimitive();
+    RhombododdyPrimitive();
+    RhombododdyPrimitive(float size, int res);
+    ~RhombododdyPrimitive();
 
     void set(float size, int res);
     void set(float size);

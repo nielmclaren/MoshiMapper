@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "rhombododdyLattice.h"
+#include "RhombododdyLattice.h"
 
 class ofApp : public ofBaseApp {
 public:

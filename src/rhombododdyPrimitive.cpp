@@ -1,26 +1,26 @@
 
-#include "rhombododdyPrimitive.h"
+#include "RhombododdyPrimitive.h"
 
-rhombododdyPrimitive::rhombododdyPrimitive() {
+RhombododdyPrimitive::RhombododdyPrimitive() {
     texCoords = ofVec4f(0,0,1,1);
     set(100, 2);
 }
 
-rhombododdyPrimitive::rhombododdyPrimitive(float size, int res) {
+RhombododdyPrimitive::RhombododdyPrimitive(float size, int res) {
     texCoords = ofVec4f(0,0,1,1);
     set(size, res);
 }
 
-rhombododdyPrimitive::~rhombododdyPrimitive() {}
+RhombododdyPrimitive::~RhombododdyPrimitive() {}
 
-void rhombododdyPrimitive::set(float sizeArg, int res) {
+void RhombododdyPrimitive::set(float sizeArg, int res) {
     size = sizeArg;
     resolution = res;
 
     int resX = res;
     int resY = res;
     int resZ = res;
-
+/*
     //FRONT, resY, resX
     strides[ SIDE_FRONT ][0] = 0;
     strides[ SIDE_FRONT ][1] = (resY)*(resX)*6;
@@ -56,13 +56,13 @@ void rhombododdyPrimitive::set(float sizeArg, int res) {
     strides[ SIDE_BOTTOM ][1] = (resZ)*(resX)*6;
     vertices[SIDE_BOTTOM][0] = vertices[SIDE_TOP][0] + vertices[SIDE_TOP][1];
     vertices[SIDE_BOTTOM][1] = (resY+1) * (resZ+1);
-
+*/
     getMesh() = rhombododdyMesh(size, resolution);
 
     normalizeAndApplySavedTexCoords();
 }
 
-ofMesh rhombododdyPrimitive::rhombododdyMesh(float size, int res) {
+ofMesh RhombododdyPrimitive::rhombododdyMesh(float size, int res) {
   ofMesh mesh;
   mesh.setMode(OF_PRIMITIVE_TRIANGLES);
 
@@ -764,22 +764,22 @@ ofMesh rhombododdyPrimitive::rhombododdyMesh(float size, int res) {
   return mesh;
 }
 
-void rhombododdyPrimitive::set(float sizeArg) {
+void RhombododdyPrimitive::set(float sizeArg) {
     set(sizeArg, resolution);
 }
 
-vector<ofIndexType> rhombododdyPrimitive::getSideIndices( int sideIndex ) const {
+vector<ofIndexType> RhombododdyPrimitive::getSideIndices( int sideIndex ) const {
   if(sideIndex < 0 || sideIndex >= SIDES_TOTAL) {
-    ofLogWarning("rhombododdyPrimitive") << "getSideIndices(): faceIndex out of bounds, returning SIDE_FRONT";
+    ofLogWarning("RhombododdyPrimitive") << "getSideIndices(): faceIndex out of bounds, returning SIDE_FRONT";
     sideIndex = SIDE_FRONT;
   }
 
   return getIndices(strides[sideIndex][0], strides[sideIndex][0] + strides[sideIndex][1]);
 }
 
-ofMesh rhombododdyPrimitive::getSideMesh(int sideIndex) const {
+ofMesh RhombododdyPrimitive::getSideMesh(int sideIndex) const {
   if(sideIndex < 0 || sideIndex > SIDES_TOTAL) {
-    ofLogWarning("rhombododdyPrimitive") << "getSideMesh(): faceIndex out of bounds, using SIDE_FRONT";
+    ofLogWarning("RhombododdyPrimitive") << "getSideMesh(): faceIndex out of bounds, using SIDE_FRONT";
     sideIndex = SIDE_FRONT;
   }
   int startIndex  = strides[sideIndex][0];
@@ -791,19 +791,19 @@ ofMesh rhombododdyPrimitive::getSideMesh(int sideIndex) const {
   return getMesh().getMeshForIndices( startIndex, endIndex, startVertIndex, endVertIndex );
 }
 
-void rhombododdyPrimitive::setResolution(int res) {
+void RhombododdyPrimitive::setResolution(int res) {
   resolution = res;
 }
 
-void rhombododdyPrimitive::setMode( ofPrimitiveMode mode ) {
+void RhombododdyPrimitive::setMode( ofPrimitiveMode mode ) {
     // only supports triangles //
     setResolution(resolution);
 }
 
-int rhombododdyPrimitive::getResolution() const {
+int RhombododdyPrimitive::getResolution() const {
   return resolution;
 }
 
-float rhombododdyPrimitive::getSize() const {
+float RhombododdyPrimitive::getSize() const {
     return size;
 }

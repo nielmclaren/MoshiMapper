@@ -1,5 +1,5 @@
 
-#include "rhombododdyLattice.h"
+#include "RhombododdyLattice.h"
 
 RhombododdyLattice::RhombododdyLattice() {
     rhombododdy.setMode(OF_PRIMITIVE_TRIANGLES);

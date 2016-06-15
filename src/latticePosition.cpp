@@ -1,5 +1,5 @@
 
-#include "latticePosition.h"
+#include "LatticePosition.h"
 
 LatticePosition::LatticePosition() {
   x = 0;
