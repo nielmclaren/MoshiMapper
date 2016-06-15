@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:moshiModelTest.xcodeproj">
+      location = "self:moshiMapper.xcodeproj">
    </FileRef>
 </Workspace>
