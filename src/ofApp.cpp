@@ -25,7 +25,6 @@ void ofApp::setup(){
     ofSetVerticalSync(true);
 
     setupLighting();
-    setupMaterial();
     setupLattice();
 }
 
@@ -39,13 +38,6 @@ void ofApp::setupLighting() {
 
     pointLight3.setDiffuseColor(ofFloatColor(19.f/255.f,94.f/255.f,77.f/255.f));
     pointLight3.setSpecularColor(ofFloatColor(18.f/255.f,150.f/255.f,135.f/255.f));
-}
-
-void ofApp::setupMaterial() {
-    // shininess is a value between 0 - 128, 128 being the most shiny //
-    material.setShininess( 120 );
-    // the light highlight of the material //
-    material.setSpecularColor(ofColor(255, 255, 255, 255));
 }
 
 void ofApp::setupLattice() {
@@ -117,23 +109,28 @@ void ofApp::draw(){
     ofSetColor(0);
     ofDrawGrid(500, 10, false, false, true, false);
 
-    ofSetColor(magenta);
     drawLattice();
 
     easyCam.end();
 }
 
 void ofApp::drawLattice() {
-    material.begin();
-
     lattice.draw();
-
-    material.end();
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-
+  int index;
+  switch (key) {
+    case OF_KEY_UP:
+      lattice.setSelectedIndex(lattice.getSelectedIndex() + 1);
+      cout << "Selected: " << lattice.getSelectedIndex() << endl;
+      break;
+    case OF_KEY_DOWN:
+      lattice.setSelectedIndex(lattice.getSelectedIndex() - 1);
+      cout << "Selected: " << lattice.getSelectedIndex() << endl;
+      break;
+  }
 }
 
 //--------------------------------------------------------------

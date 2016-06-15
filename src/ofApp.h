@@ -7,7 +7,6 @@ class ofApp : public ofBaseApp {
 public:
     void setup();
     void setupLighting();
-    void setupMaterial();
     void setupLattice();
 
     void update();
@@ -34,6 +33,5 @@ public:
     ofLight pointLight;
     ofLight pointLight2;
     ofLight pointLight3;
-    ofMaterial material;
 };
 

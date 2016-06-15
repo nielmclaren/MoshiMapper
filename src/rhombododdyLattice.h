@@ -1,4 +1,5 @@
 
+#include "ofMain.h"
 #include "ofGraphics.h"
 #include "LatticePosition.h"
 #include "RhombododdyFace.h"
@@ -17,9 +18,14 @@ public:
     LatticePosition* getPosition(int x, int y, int z);
     void setPosition(int x, int y, int z, bool v);
 
+    int getSelectedIndex();
+    void setSelectedIndex(int i);
+
     void debug();
 
 protected:
+    void initMaterial();
+
     void drawRhombododdy(LatticePosition* p);
     int getIndexOfPosition(int x, int y, int z);
     void calculateNeighbors();
@@ -30,5 +36,9 @@ protected:
 
     float size;
     std::vector<LatticePosition*> positions;
+    int selectedIndex;
+
+    ofMaterial normalMaterial;
+    ofMaterial selectedMaterial;
 };
 

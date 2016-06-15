@@ -4,7 +4,24 @@
 RhombododdyLattice::RhombododdyLattice() {
     rhombododdy.setMode(OF_PRIMITIVE_TRIANGLES);
     rhombododdy.set(200, 2);
+
+    selectedIndex = -1;
+
+    initMaterial();
 }
+
+void RhombododdyLattice::initMaterial() {
+    // shininess is a value between 0 - 128, 128 being the most shiny //
+    normalMaterial.setShininess( 120 );
+    selectedMaterial.setShininess( 120 );
+    // the light highlight of the material //
+    normalMaterial.setSpecularColor(ofColor(255, 255, 255, 255));
+    selectedMaterial.setSpecularColor(ofColor(255, 255, 255, 255));
+
+    normalMaterial.setDiffuseColor(ofColor(255, 255, 255, 255));
+    selectedMaterial.setDiffuseColor(ofColor(255, 0, 0, 255));
+}
+
 RhombododdyLattice::~RhombododdyLattice() {}
 
 void RhombododdyLattice::draw() {
@@ -18,7 +35,21 @@ void RhombododdyLattice::drawRhombododdy(LatticePosition* p) {
       p->x * 2/sqrt(2) * size + (p->y % 2 == 0 ? 0 : 1/sqrt(2) * size),
       p->y * size / 2,
       p->z * size + (p->y % 2 == 0 ? 0 : size/2));
-  rhombododdy.draw();
+
+  if (selectedIndex >= 0
+      && selectedIndex < positions.size()
+      && positions[selectedIndex]->x == p->x
+      && positions[selectedIndex]->y == p->y
+      && positions[selectedIndex]->z == p->z) {
+    selectedMaterial.begin();
+    rhombododdy.draw();
+    selectedMaterial.end();
+  }
+  else {
+    normalMaterial.begin();
+    rhombododdy.draw();
+    normalMaterial.end();
+  }
 }
 
 float RhombododdyLattice::getSize() {
@@ -50,6 +81,14 @@ void RhombododdyLattice::setPosition(int x, int y, int z, bool v) {
   }
 
   calculateNeighbors();
+}
+
+int RhombododdyLattice::getSelectedIndex() {
+  return selectedIndex;
+}
+
+void RhombododdyLattice::setSelectedIndex(int i) {
+  selectedIndex = i;
 }
 
 void RhombododdyLattice::debug() {
