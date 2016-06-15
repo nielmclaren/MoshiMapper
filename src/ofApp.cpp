@@ -130,6 +130,9 @@ void ofApp::keyPressed(int key){
       lattice.setSelectedIndex(lattice.getSelectedIndex() - 1);
       cout << "Selected: " << lattice.getSelectedIndex() << endl;
       break;
+    case ' ':
+      lattice.debug();
+      break;
   }
 }
 
@@ -155,7 +158,6 @@ void ofApp::mousePressed(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
-  lattice.debug();
 }
 
 //--------------------------------------------------------------

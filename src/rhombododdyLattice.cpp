@@ -92,14 +92,22 @@ void RhombododdyLattice::setSelectedIndex(int i) {
 }
 
 void RhombododdyLattice::debug() {
-  for (int i = 0; i < positions.size(); i++) {
-    LatticePosition* pos = positions[i];
-    cout << "pos(" << pos->x << ", " << pos->y << ", " << pos->z << ")" << endl;
+  if (selectedIndex < 0 || selectedIndex >= positions.size()) {
+    for (int i = 0; i < positions.size(); i++) {
+      LatticePosition* pos = positions[i];
+      debug(pos);
+    }
+  }
+  else {
+    debug(positions[selectedIndex]);
+  }
+}
 
-    for (int i = 0; i < 12; i++) {
-      if (getNeighbor(pos, i)) {
-        cout << "\t" << RhombododdyFace::getDisplayName(i) << endl;
-      }
+void RhombododdyLattice::debug(LatticePosition* pos) {
+  cout << "pos(" << pos->x << ", " << pos->y << ", " << pos->z << ")" << endl;
+  for (int i = 0; i < 12; i++) {
+    if (getNeighbor(pos, i)) {
+      cout << "\t" << RhombododdyFace::getDisplayName(i) << endl;
     }
   }
 }

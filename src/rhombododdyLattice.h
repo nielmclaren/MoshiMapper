@@ -32,6 +32,8 @@ protected:
     void calculateNeighbors(LatticePosition* pos);
     LatticePosition* getNeighbor(LatticePosition* pos, int face);
 
+    void debug(LatticePosition* pos);
+
     RhombododdyPrimitive rhombododdy;
 
     float size;
