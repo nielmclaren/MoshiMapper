@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxGui.h"
 #include "RhombododdyLattice.h"
 
 class ofApp : public ofBaseApp {
@@ -8,11 +9,13 @@ public:
     void setup();
     void setupLighting();
     void setupLattice();
+    void setupGui();
 
     void update();
 
     void draw();
-    void drawLattice();
+
+    void indexSliderChanged(int& index);
 
     void keyPressed(int key);
     void keyReleased(int key);
@@ -33,5 +36,9 @@ public:
     ofLight pointLight;
     ofLight pointLight2;
     ofLight pointLight3;
+
+    ofxIntSlider indexSlider;
+    ofxLabel screenSizeLabel;
+    ofxPanel gui;
 };
 

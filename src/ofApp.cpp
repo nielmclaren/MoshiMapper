@@ -21,59 +21,68 @@ void rotateToNormal(ofVec3f normal) {
 }
 
 //--------------------------------------------------------------
-void ofApp::setup(){
-    ofSetVerticalSync(true);
+void ofApp::setup() {
+  ofSetVerticalSync(true);
 
-    setupLighting();
-    setupLattice();
+  setupLighting();
+  setupLattice();
+  setupGui();
 }
 
 void ofApp::setupLighting() {
-    ofSetSmoothLighting(true);
-    pointLight.setDiffuseColor(ofFloatColor(.85, .85, .55));
-    pointLight.setSpecularColor(ofFloatColor(1.f, 1.f, 1.f));
+  ofSetSmoothLighting(true);
+  pointLight.setDiffuseColor(ofFloatColor(.85, .85, .55));
+  pointLight.setSpecularColor(ofFloatColor(1.f, 1.f, 1.f));
 
-    pointLight2.setDiffuseColor(ofFloatColor( 238.f/255.f, 57.f/255.f, 135.f/255.f));
-    pointLight2.setSpecularColor(ofFloatColor(.8f, .8f, .9f));
+  pointLight2.setDiffuseColor(ofFloatColor( 238.f/255.f, 57.f/255.f, 135.f/255.f));
+  pointLight2.setSpecularColor(ofFloatColor(.8f, .8f, .9f));
 
-    pointLight3.setDiffuseColor(ofFloatColor(19.f/255.f,94.f/255.f,77.f/255.f));
-    pointLight3.setSpecularColor(ofFloatColor(18.f/255.f,150.f/255.f,135.f/255.f));
+  pointLight3.setDiffuseColor(ofFloatColor(19.f/255.f,94.f/255.f,77.f/255.f));
+  pointLight3.setSpecularColor(ofFloatColor(18.f/255.f,150.f/255.f,135.f/255.f));
 }
 
 void ofApp::setupLattice() {
-    lattice.setSize(50);
+  lattice.setSize(50);
 
-    lattice.setPosition(2, 0, 1, true);
-    lattice.setPosition(1, 0, 2, true);
-    lattice.setPosition(2, 0, 2, true);
-    lattice.setPosition(1, 0, 3, true);
+  lattice.setPosition(2, 0, 1, true);
+  lattice.setPosition(1, 0, 2, true);
+  lattice.setPosition(2, 0, 2, true);
+  lattice.setPosition(1, 0, 3, true);
 
-    lattice.setPosition(1, 1, 0, true);
-    lattice.setPosition(0, 1, 1, true);
-    lattice.setPosition(1, 1, 1, true);
-    lattice.setPosition(2, 1, 1, true);
-    lattice.setPosition(0, 1, 2, true);
-    lattice.setPosition(1, 1, 2, true);
-    lattice.setPosition(2, 1, 2, true);
-    lattice.setPosition(1, 1, 3, true);
+  lattice.setPosition(1, 1, 0, true);
+  lattice.setPosition(0, 1, 1, true);
+  lattice.setPosition(1, 1, 1, true);
+  lattice.setPosition(2, 1, 1, true);
+  lattice.setPosition(0, 1, 2, true);
+  lattice.setPosition(1, 1, 2, true);
+  lattice.setPosition(2, 1, 2, true);
+  lattice.setPosition(1, 1, 3, true);
 
-    lattice.setPosition(1, 2, 0, true);
-    lattice.setPosition(2, 2, 0, true);
-    lattice.setPosition(0, 2, 1, true);
-    lattice.setPosition(1, 2, 1, true);
-    lattice.setPosition(3, 2, 1, true);
-    lattice.setPosition(0, 2, 2, true);
-    lattice.setPosition(3, 2, 2, true);
-    lattice.setPosition(2, 2, 3, true);
-    lattice.setPosition(1, 2, 4, true);
-    lattice.setPosition(2, 2, 4, true);
+  lattice.setPosition(1, 2, 0, true);
+  lattice.setPosition(2, 2, 0, true);
+  lattice.setPosition(0, 2, 1, true);
+  lattice.setPosition(1, 2, 1, true);
+  lattice.setPosition(3, 2, 1, true);
+  lattice.setPosition(0, 2, 2, true);
+  lattice.setPosition(3, 2, 2, true);
+  lattice.setPosition(2, 2, 3, true);
+  lattice.setPosition(1, 2, 4, true);
+  lattice.setPosition(2, 2, 4, true);
 
-    lattice.setPosition(0, 3, 0, true);
-    lattice.setPosition(2, 3, 0, true);
-    lattice.setPosition(0, 3, 2, true);
-    lattice.setPosition(3, 3, 2, true);
-    lattice.setPosition(0, 3, 3, true);
-    lattice.setPosition(1, 3, 3, true);
+  lattice.setPosition(0, 3, 0, true);
+  lattice.setPosition(2, 3, 0, true);
+  lattice.setPosition(0, 3, 2, true);
+  lattice.setPosition(3, 3, 2, true);
+  lattice.setPosition(0, 3, 3, true);
+  lattice.setPosition(1, 3, 3, true);
+}
+
+void ofApp::setupGui() {
+  indexSlider.addListener(this, &ofApp::indexSliderChanged);
+
+  gui.setup();
+  gui.add(indexSlider.setup("rhombododdy index", 5, 3, 30));
+  gui.add(screenSizeLabel.setup("screen size", ofToString(ofGetWidth())+"x"+ofToString(ofGetHeight())));
 }
 
 //--------------------------------------------------------------
@@ -109,13 +118,17 @@ void ofApp::draw(){
     ofSetColor(0);
     ofDrawGrid(500, 10, false, false, true, false);
 
-    drawLattice();
+    lattice.draw();
 
     easyCam.end();
+
+    ofDisableDepthTest();
+
+    gui.draw();
 }
 
-void ofApp::drawLattice() {
-    lattice.draw();
+void ofApp::indexSliderChanged(int &index){
+  lattice.setSelectedIndex(index);
 }
 
 //--------------------------------------------------------------
