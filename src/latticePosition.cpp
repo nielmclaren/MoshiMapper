@@ -15,3 +15,27 @@ LatticePosition::LatticePosition(int xArg, int yArg, int zArg) {
 
 LatticePosition::~LatticePosition() {}
 
+void LatticePosition::initNeighbors() {
+  for (int i = 0; i < 12; i++) {
+    neighbors[i] = 0;
+  }
+}
+
+LatticePosition* LatticePosition::getNeighbor(int face) {
+  return neighbors[face];
+}
+
+void LatticePosition::setNeighbor(int face, LatticePosition* pos) {
+  neighbors[face] = pos;
+}
+
+int LatticePosition::neighborCount() {
+  int count = 0;
+  for (int i = 0; i < 12; i++) {
+    if (neighbors[i]) {
+      count++;
+    }
+  }
+  return count;
+}
+
