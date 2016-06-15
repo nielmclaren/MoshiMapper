@@ -22,6 +22,9 @@ void LatticePosition::initNeighbors() {
 }
 
 LatticePosition* LatticePosition::getNeighbor(int face) {
+  if (face < 0 || face >= 12) {
+    return 0;
+  }
   return neighbors[face];
 }
 

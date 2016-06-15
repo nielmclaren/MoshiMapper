@@ -83,6 +83,13 @@ void RhombododdyLattice::setPosition(int x, int y, int z, bool v) {
   calculateNeighbors();
 }
 
+LatticePosition* RhombododdyLattice::getSelectedPosition() {
+  if (selectedIndex < 0 || selectedIndex >= positions.size()) {
+    return 0;
+  }
+  return positions[selectedIndex];
+}
+
 int RhombododdyLattice::getSelectedIndex() {
   return selectedIndex;
 }

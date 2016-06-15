@@ -12,6 +12,7 @@
 		1CF002391D10FCC0002E8930 /* LatticePosition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CF002331D10FCC0002E8930 /* LatticePosition.cpp */; };
 		1CF0023A1D10FCC0002E8930 /* RhombododdyLattice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CF002351D10FCC0002E8930 /* RhombododdyLattice.cpp */; };
 		1CF0023B1D10FCC0002E8930 /* RhombododdyPrimitive.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CF002371D10FCC0002E8930 /* RhombododdyPrimitive.cpp */; };
+		1CF002421D11383D002E8930 /* NeighborReadout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CF002401D11383D002E8930 /* NeighborReadout.cpp */; };
 		483908258D00B98B4BE69F07 /* ofxLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D67A00EB899FAC09430597 /* ofxLabel.cpp */; };
 		4ADB88E2FB52E76A471065DE /* ofxOscParameterSync.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0AED834CE4DEC5260AF302A2 /* ofxOscParameterSync.cpp */; };
 		510CAFE035E576A4E1502D52 /* UdpSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6DEF695B88BA5FAACEAA937 /* UdpSocket.cpp */; };
@@ -84,6 +85,8 @@
 		1CF002371D10FCC0002E8930 /* RhombododdyPrimitive.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RhombododdyPrimitive.cpp; sourceTree = "<group>"; };
 		1CF002381D10FCC0002E8930 /* RhombododdyPrimitive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RhombododdyPrimitive.h; sourceTree = "<group>"; };
 		1CF0023C1D1121C6002E8930 /* RhombododdyFace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RhombododdyFace.h; sourceTree = "<group>"; };
+		1CF002401D11383D002E8930 /* NeighborReadout.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NeighborReadout.cpp; sourceTree = "<group>"; };
+		1CF002411D11383D002E8930 /* NeighborReadout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeighborReadout.h; sourceTree = "<group>"; };
 		20F35AFADAF0068B067E713F /* OscReceivedElements.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OscReceivedElements.h; path = ../../../addons/ofxOsc/libs/oscpack/src/osc/OscReceivedElements.h; sourceTree = SOURCE_ROOT; };
 		23640F57DF6C4BB6BFC5DA4C /* PacketListener.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = PacketListener.h; path = ../../../addons/ofxOsc/libs/oscpack/src/ip/PacketListener.h; sourceTree = SOURCE_ROOT; };
 		2834D88A62CD23F3DE2C47D1 /* ofxButton.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxButton.h; path = ../../../addons/ofxGui/src/ofxButton.h; sourceTree = SOURCE_ROOT; };
@@ -330,6 +333,8 @@
 				1CF002331D10FCC0002E8930 /* LatticePosition.cpp */,
 				1CF002341D10FCC0002E8930 /* LatticePosition.h */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
+				1CF002401D11383D002E8930 /* NeighborReadout.cpp */,
+				1CF002411D11383D002E8930 /* NeighborReadout.h */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
 				1CF0023C1D1121C6002E8930 /* RhombododdyFace.h */,
@@ -488,6 +493,7 @@
 				933A2227713C720CEFF80FD9 /* tinyxml.cpp in Sources */,
 				9D44DC88EF9E7991B4A09951 /* tinyxmlerror.cpp in Sources */,
 				1CF002391D10FCC0002E8930 /* LatticePosition.cpp in Sources */,
+				1CF002421D11383D002E8930 /* NeighborReadout.cpp in Sources */,
 				5A4349E9754D6FA14C0F2A3A /* tinyxmlparser.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

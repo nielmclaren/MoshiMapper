@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxGui.h"
+#include "NeighborReadout.h"
 #include "RhombododdyLattice.h"
 
 class ofApp : public ofBaseApp {
@@ -40,5 +41,7 @@ public:
     ofxIntSlider indexSlider;
     ofxLabel screenSizeLabel;
     ofxPanel gui;
+
+    NeighborReadout neighborReadout;
 };
 

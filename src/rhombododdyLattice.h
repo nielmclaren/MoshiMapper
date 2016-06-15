@@ -18,6 +18,7 @@ public:
     LatticePosition* getPosition(int x, int y, int z);
     void setPosition(int x, int y, int z, bool v);
 
+    LatticePosition* getSelectedPosition();
     int getSelectedIndex();
     void setSelectedIndex(int i);
 

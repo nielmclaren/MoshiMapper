@@ -125,24 +125,19 @@ void ofApp::draw(){
     ofDisableDepthTest();
 
     gui.draw();
+
+    neighborReadout.draw(10, ofGetHeight() - 210);
 }
 
 void ofApp::indexSliderChanged(int &index){
   lattice.setSelectedIndex(index);
+  neighborReadout.set(lattice.getSelectedPosition());
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
   int index;
   switch (key) {
-    case OF_KEY_UP:
-      lattice.setSelectedIndex(lattice.getSelectedIndex() + 1);
-      cout << "Selected: " << lattice.getSelectedIndex() << endl;
-      break;
-    case OF_KEY_DOWN:
-      lattice.setSelectedIndex(lattice.getSelectedIndex() - 1);
-      cout << "Selected: " << lattice.getSelectedIndex() << endl;
-      break;
     case ' ':
       lattice.debug();
       break;
