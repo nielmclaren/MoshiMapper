@@ -6,8 +6,8 @@ public:
     LatticePosition(int index, int x, int y, int z);
     ~LatticePosition();
 
-    void initNeighbors();
     LatticePosition* getNeighbor(int face);
+    bool hasNeighbor(LatticePosition* pos);
     void setNeighbor(int face, LatticePosition* pos);
     int neighborCount();
 

@@ -230,7 +230,7 @@ void NeighborReadout::drawNeighborString(LatticePosition* pos, int x, int y) {
   neighborFont.drawString("n" + ofToString(pos->index), x, y);
 }
 
-void NeighborReadout::set(LatticePosition* p) {
+void NeighborReadout::setPosition(LatticePosition* p) {
   pos = p;
 }
 

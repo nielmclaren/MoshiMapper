@@ -17,17 +17,20 @@ LatticePosition::LatticePosition(int indexArg, int xArg, int yArg, int zArg) {
 
 LatticePosition::~LatticePosition() {}
 
-void LatticePosition::initNeighbors() {
-  for (int i = 0; i < 12; i++) {
-    neighbors[i] = 0;
-  }
-}
-
 LatticePosition* LatticePosition::getNeighbor(int face) {
   if (face < 0 || face >= 12) {
     return 0;
   }
   return neighbors[face];
+}
+
+bool LatticePosition::hasNeighbor(LatticePosition* pos) {
+  for (int i = 0; i < 12; i++) {
+    if (neighbors[i] == pos) {
+      return true;
+    }
+  }
+  return false;
 }
 
 void LatticePosition::setNeighbor(int face, LatticePosition* pos) {

@@ -29,6 +29,7 @@ void ofApp::setup() {
 
   setupLighting();
   setupLattice();
+  setupIndexInput();
 
   RhombododdyReport report(&lattice);
   report.save("render.png");
@@ -82,6 +83,10 @@ void ofApp::setupLattice() {
   lattice.setPosition(1, 3, 3, true);
 }
 
+void ofApp::setupIndexInput() {
+  indexInput.setLattice(&lattice);
+}
+
 //--------------------------------------------------------------
 void ofApp::update(){
     int w = ofGetWidth();
@@ -122,7 +127,19 @@ void ofApp::draw(){
     ofDisableDepthTest();
     ofDisableLighting();
 
+    drawIndexInput(10, 10);
     drawNeighborReadout(10, ofGetHeight() - 385);
+}
+
+void ofApp::drawIndexInput(int x, int y) {
+  ofFill();
+  ofSetColor(255);
+  ofDrawRectangle(x, y, 300, 95);
+  ofSetColor(0);
+  ofDrawRectangle(x + 2, y + 2, 296, 91);
+
+  ofSetColor(255);
+  indexInput.draw(x, y, 300, 95);
 }
 
 void ofApp::drawNeighborReadout(int x, int y) {
@@ -138,7 +155,8 @@ void ofApp::drawNeighborReadout(int x, int y) {
 
 void ofApp::selectedIndexChanged() {
   lattice.setSelectedIndex(selectedIndex);
-  neighborReadout.set(lattice.getSelectedPosition());
+  indexInput.setPosition(lattice.getSelectedPosition());
+  neighborReadout.setPosition(lattice.getSelectedPosition());
 }
 
 //--------------------------------------------------------------

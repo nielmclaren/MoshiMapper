@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "IndexInput.h"
 #include "NeighborReadout.h"
 #include "RhombododdyLattice.h"
 #include "RhombododdyReport.h"
@@ -10,10 +11,12 @@ public:
     void setup();
     void setupLighting();
     void setupLattice();
+    void setupIndexInput();
 
     void update();
 
     void draw();
+    void drawIndexInput(int x, int y);
     void drawNeighborReadout(int x, int y);
 
     void selectedIndexChanged();
@@ -39,6 +42,7 @@ public:
     ofLight pointLight2;
     ofLight pointLight3;
 
+    IndexInput indexInput;
     NeighborReadout neighborReadout;
 };
 

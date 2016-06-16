@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0546D1A38E13BD319CC9755B /* OscReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9BF3AA0D4FAA89D0F8A0E545 /* OscReceivedElements.cpp */; };
 		1C5094681D12703D0064E7F6 /* RhombododdyReport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5094661D12703D0064E7F6 /* RhombododdyReport.cpp */; };
+		1C898CB41D1295E000BA3F0A /* IndexInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C898CB21D1295E000BA3F0A /* IndexInput.cpp */; };
 		1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 907C5B5E104864A2D3A25745 /* ofxToggle.cpp */; };
 		1CF002391D10FCC0002E8930 /* LatticePosition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CF002331D10FCC0002E8930 /* LatticePosition.cpp */; };
 		1CF0023A1D10FCC0002E8930 /* RhombododdyLattice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CF002351D10FCC0002E8930 /* RhombododdyLattice.cpp */; };
@@ -81,6 +82,8 @@
 		1C0DA2561397A7DE0246858B /* ofxGuiGroup.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGuiGroup.h; path = ../../../addons/ofxGui/src/ofxGuiGroup.h; sourceTree = SOURCE_ROOT; };
 		1C5094661D12703D0064E7F6 /* RhombododdyReport.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RhombododdyReport.cpp; sourceTree = "<group>"; };
 		1C5094671D12703D0064E7F6 /* RhombododdyReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RhombododdyReport.h; sourceTree = "<group>"; };
+		1C898CB21D1295E000BA3F0A /* IndexInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IndexInput.cpp; sourceTree = "<group>"; };
+		1C898CB31D1295E000BA3F0A /* IndexInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexInput.h; sourceTree = "<group>"; };
 		1CF002331D10FCC0002E8930 /* LatticePosition.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LatticePosition.cpp; sourceTree = "<group>"; };
 		1CF002341D10FCC0002E8930 /* LatticePosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LatticePosition.h; sourceTree = "<group>"; };
 		1CF002351D10FCC0002E8930 /* RhombododdyLattice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RhombododdyLattice.cpp; sourceTree = "<group>"; };
@@ -333,6 +336,8 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				1C898CB21D1295E000BA3F0A /* IndexInput.cpp */,
+				1C898CB31D1295E000BA3F0A /* IndexInput.h */,
 				1CF002331D10FCC0002E8930 /* LatticePosition.cpp */,
 				1CF002341D10FCC0002E8930 /* LatticePosition.h */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
@@ -477,6 +482,7 @@
 				B266578FC55D23BFEBC042E7 /* ofxGuiGroup.cpp in Sources */,
 				1C5094681D12703D0064E7F6 /* RhombododdyReport.cpp in Sources */,
 				483908258D00B98B4BE69F07 /* ofxLabel.cpp in Sources */,
+				1C898CB41D1295E000BA3F0A /* IndexInput.cpp in Sources */,
 				F285EB3169F1566CA3D93C20 /* ofxPanel.cpp in Sources */,
 				837220E80EB56CD44AD27F2A /* ofxSlider.cpp in Sources */,
 				B56FE57CC35806596D38118C /* ofxSliderGroup.cpp in Sources */,

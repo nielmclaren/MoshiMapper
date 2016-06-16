@@ -45,7 +45,7 @@ void RhombododdyReport::drawLattice() {
 
 void RhombododdyReport::drawPosition(LatticePosition* pos) {
   ofSetColor(0);
-  readout.set(pos);
+  readout.setPosition(pos);
   readout.draw(pos->index % 6 * widthPer, pos->index / 6 * heightPer);
 }
 

@@ -10,7 +10,7 @@ public:
     ~NeighborReadout();
 
     void draw(int x, int y);
-    void set(LatticePosition* p);
+    void setPosition(LatticePosition* p);
 
     void drawRhombododdy(int x, int y, int h);
     void drawRhombus(int x, int y, int h);
