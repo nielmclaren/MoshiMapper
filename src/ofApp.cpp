@@ -84,6 +84,7 @@ void ofApp::setupLattice() {
 }
 
 void ofApp::setupIndexInput() {
+  indexInput.set(10, 10, 300, 95);
   indexInput.setLattice(&lattice);
 }
 
@@ -139,7 +140,7 @@ void ofApp::drawIndexInput(int x, int y) {
   ofDrawRectangle(x + 2, y + 2, 296, 91);
 
   ofSetColor(255);
-  indexInput.draw(x, y, 300, 95);
+  indexInput.draw();
 }
 
 void ofApp::drawNeighborReadout(int x, int y) {
@@ -199,6 +200,7 @@ void ofApp::mousePressed(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
+  indexInput.mouseReleased(x, y, button);
 }
 
 //--------------------------------------------------------------

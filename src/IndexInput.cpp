@@ -9,12 +9,19 @@ IndexInput::IndexInput() {
 
 IndexInput::~IndexInput() {}
 
-void IndexInput::draw(int x, int y, int width, int height) {
+void IndexInput::set(int x, int y, int w, int h) {
+  boundsX = x;
+  boundsY = y;
+  boundsW = w;
+  boundsH = h;
+}
+
+void IndexInput::draw() {
   if (lattice) {
-    x += 4;
-    y += 4;
-    width -= 8;
-    height -= 8;
+    int x = boundsX + 4;
+    int y = boundsY + 4;
+    int width = boundsW - 8;
+    int height = boundsH - 8;
     int w = width / 10;
     int h = w;
 
@@ -59,5 +66,28 @@ void IndexInput::setLattice(RhombododdyLattice* latticeArg) {
 
 void IndexInput::setPosition(LatticePosition* posArg) {
   pos = posArg;
+}
+
+void IndexInput::mouseReleased(int mouseX, int mouseY, int button) {
+  if (boundsX < mouseX && mouseX < boundsX + boundsW
+      && boundsY < mouseY && mouseY < boundsY + boundsH) {
+    int x = boundsX + 4;
+    int y = boundsY + 4;
+    int width = boundsW - 8;
+    int height = boundsH - 8;
+    int w = width / 10;
+    int h = w;
+
+    int count = lattice->positionCount();
+    for (int i = 0; i < count; i++) {
+      int px = x + (i % 10) * w;
+      int py = y + floor(i / 10) * h;
+
+      if (px < mouseX && mouseX < px + w
+          && py < mouseY && mouseY < py + h) {
+        // FIXME: Do a callback function here.
+      }
+    }
+  }
 }
 
