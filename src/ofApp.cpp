@@ -146,7 +146,7 @@ void ofApp::drawNeighborReadout(int x, int y) {
 
 void ofApp::indexSliderChanged(int &index){
   lattice.setSelectedIndex(index);
-  neighborReadout.set(index, lattice.getSelectedPosition());
+  neighborReadout.set(lattice.getSelectedPosition());
 }
 
 //--------------------------------------------------------------
