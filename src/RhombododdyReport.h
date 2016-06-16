@@ -12,9 +12,15 @@ public:
 
 private:
   void drawLattice();
+  void drawPosition(LatticePosition* pos);
+
   int getReportWidth();
   int getReportHeight();
 
+  int widthPer;
+  int heightPer;
+
   RhombododdyLattice* lattice;
+  NeighborReadout readout;
 };
 

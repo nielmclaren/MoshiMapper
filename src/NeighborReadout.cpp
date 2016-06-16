@@ -2,7 +2,9 @@
 #include "NeighborReadout.h"
 
 NeighborReadout::NeighborReadout() {
-  labelFont.loadFont("arial.ttf", 12);
+  titleFont.loadFont("roadgeek.ttf", 20);
+  labelFont.loadFont("roadgeek.ttf", 15);
+  neighborFont.loadFont("arial.ttf", 10);
 }
 
 NeighborReadout::~NeighborReadout() {}
@@ -122,25 +124,27 @@ void NeighborReadout::drawNeighbors(int x, int y) {
 }
 
 void NeighborReadout::drawExpandedRhombododdy(int x, int y) {
-  labelFont.drawString("n" + ofToString(index), x + 61, y + 27);
+  titleFont.drawString("n" + ofToString(index), x + 58, y + 27);
 
   drawRhombododdy(x + 70, y + 75, 80);
-  labelFont.drawString("top", x + 120, y + 50);
+  labelFont.drawString("top", x + 140, y + 80);
 
   drawRhombus(x + 70, y + 150, 80);
-  labelFont.drawString("front", x + 120, y + 135);
+  labelFont.drawString("front", x + 140, y + 155);
 
   drawRhombododdy(x + 70, y + 225, 80);
-  labelFont.drawString("bottom", x + 120, y + 200);
+  labelFont.drawString("bottom", x + 140, y + 230);
 
   drawRhombus(x + 70, y + 300, 80);
-  labelFont.drawString("back", x + 120, y + 285);
+  labelFont.drawString("back", x + 140, y + 305);
 
   labelFont.drawString("left", x + 27, y + 347);
   labelFont.drawString("right", x + 90, y + 347);
 }
 
 void NeighborReadout::drawExpandedNeighbors(int x, int y) {
+  LatticePosition* neighbor;
+
   int radius = 7;
 
   float h = 80;
@@ -151,35 +155,42 @@ void NeighborReadout::drawExpandedNeighbors(int x, int y) {
 
   ofFill();
 
-  if (pos->getNeighbor(RhombododdyFace::FRONT)) {
-    ofDrawCircle(x + 70, y + 150, radius);
+  if ((neighbor = pos->getNeighbor(RhombododdyFace::FRONT))) {
+    drawNeighborString(neighbor, x + 70 - 8, y + 150 - 4);
+    ofDrawCircle(x + 70, y + 150 + 8, radius);
   }
 
-  if (pos->getNeighbor(RhombododdyFace::BACK)) {
-    ofDrawCircle(x + 70, y + 300, radius);
+  if ((neighbor = pos->getNeighbor(RhombododdyFace::BACK))) {
+    drawNeighborString(neighbor, x + 70 - 8, y + 300 - 4);
+    ofDrawCircle(x + 70, y + 300 + 8, radius);
   }
 
   // TOP
 
   cx = x + 70;
   cy = y + 75;
-  if (pos->getNeighbor(RhombododdyFace::TOP)) {
-    ofDrawCircle(cx, cy, radius);
+  if ((neighbor = pos->getNeighbor(RhombododdyFace::TOP))) {
+    drawNeighborString(neighbor, cx - 8, cy - 4);
+    ofDrawCircle(cx, cy + 8, radius);
   }
 
-  if (pos->getNeighbor(RhombododdyFace::LEFT_TOP_FRONT)) {
+  if ((neighbor = pos->getNeighbor(RhombododdyFace::LEFT_TOP_FRONT))) {
+    drawNeighborString(neighbor, cx - w/2 - 32, cy + h/4 + 18);
     ofDrawCircle(cx - w/2, cy + h/4, radius);
   }
 
-  if (pos->getNeighbor(RhombododdyFace::RIGHT_TOP_FRONT)) {
+  if ((neighbor = pos->getNeighbor(RhombododdyFace::RIGHT_TOP_FRONT))) {
+    drawNeighborString(neighbor, cx + w/2 + 18, cy + h/4 + 18);
     ofDrawCircle(cx + w/2, cy + h/4, radius);
   }
 
-  if (pos->getNeighbor(RhombododdyFace::LEFT_TOP_BACK)) {
+  if ((neighbor = pos->getNeighbor(RhombododdyFace::LEFT_TOP_BACK))) {
+    drawNeighborString(neighbor, cx - w/2 - 32, cy - h/4 - 10);
     ofDrawCircle(cx - w/2, cy - h/4, radius);
   }
 
-  if (pos->getNeighbor(RhombododdyFace::RIGHT_TOP_BACK)) {
+  if ((neighbor = pos->getNeighbor(RhombododdyFace::RIGHT_TOP_BACK))) {
+    drawNeighborString(neighbor, cx + w/2 + 18, cy - h/4 - 10);
     ofDrawCircle(cx + w/2, cy - h/4, radius);
   }
 
@@ -187,25 +198,34 @@ void NeighborReadout::drawExpandedNeighbors(int x, int y) {
 
   cx = x + 70;
   cy = y + 225;
-  if (pos->getNeighbor(RhombododdyFace::BOTTOM)) {
-    ofDrawCircle(cx, cy, radius);
+  if ((neighbor = pos->getNeighbor(RhombododdyFace::BOTTOM))) {
+    drawNeighborString(neighbor, cx - 8, cy - 4);
+    ofDrawCircle(cx, cy + 8, radius);
   }
 
-  if (pos->getNeighbor(RhombododdyFace::LEFT_BOTTOM_FRONT)) {
+  if ((neighbor = pos->getNeighbor(RhombododdyFace::LEFT_BOTTOM_FRONT))) {
+    drawNeighborString(neighbor, cx - w/2 - 32, cy - h/4 - 10);
     ofDrawCircle(cx - w/2, cy - h/4, radius);
   }
 
-  if (pos->getNeighbor(RhombododdyFace::RIGHT_BOTTOM_FRONT)) {
+  if ((neighbor = pos->getNeighbor(RhombododdyFace::RIGHT_BOTTOM_FRONT))) {
+    drawNeighborString(neighbor, cx + w/2 + 18, cy - h/4 - 10);
     ofDrawCircle(cx + w/2, cy - h/4, radius);
   }
 
-  if (pos->getNeighbor(RhombododdyFace::LEFT_BOTTOM_BACK)) {
+  if ((neighbor = pos->getNeighbor(RhombododdyFace::LEFT_BOTTOM_BACK))) {
+    drawNeighborString(neighbor, cx - w/2 - 32, cy + h/4 + 18);
     ofDrawCircle(cx - w/2, cy + h/4, radius);
   }
 
-  if (pos->getNeighbor(RhombododdyFace::RIGHT_BOTTOM_BACK)) {
+  if ((neighbor = pos->getNeighbor(RhombododdyFace::RIGHT_BOTTOM_BACK))) {
+    drawNeighborString(neighbor, cx + w/2 + 18, cy + h/4 + 18);
     ofDrawCircle(cx + w/2, cy + h/4, radius);
   }
+}
+
+void NeighborReadout::drawNeighborString(LatticePosition* pos, int x, int y) {
+  neighborFont.drawString("n" + ofToString(pos->index), x, y);
 }
 
 void NeighborReadout::set(int indexArg, LatticePosition* p) {

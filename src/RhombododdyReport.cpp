@@ -2,16 +2,19 @@
 
 RhombododdyReport::RhombododdyReport(RhombododdyLattice* latticeArg) {
   lattice = latticeArg;
+
+  widthPer = 200;
+  heightPer = 375;
 }
 
-~RhombododdyReport::RhombododdyReport() {}
+RhombododdyReport::~RhombododdyReport() {}
 
 void RhombododdyReport::save(string filepath) {
   ofFbo fbo;
   fbo.allocate(getReportWidth(), getReportHeight(), GL_RGB);
 
   fbo.begin();
-  ofClear(0,0,0,0);
+  ofClear(255);
   drawLattice();
   fbo.end();
 
@@ -24,29 +27,26 @@ void RhombododdyReport::save(string filepath) {
 }
 
 int RhombododdyReport::getReportWidth() {
-  int widthPer = 200;
-  if (lattice.rhombododdyCount() < 6) {
-    return lattice.rhombododdyCount() * widthPer;
+  if (lattice->positionCount() < 6) {
+    return lattice->positionCount() * widthPer;
   }
   return 6 * widthPer;
 }
 
 int RhombododdyReport::getReportHeight() {
-  int heightPer = 375;
-  return (lattice.rhombododdyCount() / 6) * heightPer;
+  return ceil((float)lattice->positionCount() / 6) * heightPer;
 }
 
 void RhombododdyReport::drawLattice() {
-  std::vector<LatticePositions*> positions = lattice.getPositions();
-
-  for (int i = 0; i < positions.size(); i++) {
-    drawPosition(i, positions[i]);
+  for (int i = 0; i < lattice->positionCount(); i++) {
+    drawPosition(lattice->getPosition(i));
   }
-
-  delete positions;
 }
 
-void RhombododdyReport::drawRhombododdy(int index, LatticePosition* pos) {
+void RhombododdyReport::drawPosition(LatticePosition* pos) {
+  ofSetColor(0);
+  readout.set(pos->index, pos);
+  readout.draw(pos->index % 6 * widthPer, pos->index / 6 * heightPer);
 }
 
 

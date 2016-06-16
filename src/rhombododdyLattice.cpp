@@ -80,7 +80,7 @@ void RhombododdyLattice::setPosition(int x, int y, int z, bool v) {
   int index = getIndexOfPosition(x, y, z);
   if (index < 0 || index >= positions.size()) {
     if (v) {
-      positions.push_back(new LatticePosition(x, y, z));
+      positions.push_back(new LatticePosition(positions.size(), x, y, z));
     }
   }
   else if (!v) {

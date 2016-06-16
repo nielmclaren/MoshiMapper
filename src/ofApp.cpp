@@ -84,7 +84,7 @@ void ofApp::setupGui() {
   indexSlider.addListener(this, &ofApp::indexSliderChanged);
 
   gui.setup();
-  gui.add(indexSlider.setup("rhombododdy index", 5, 3, 30));
+  gui.add(indexSlider.setup("rhombododdy index", 8, 3, 30));
   gui.add(screenSizeLabel.setup("screen size", ofToString(ofGetWidth())+"x"+ofToString(ofGetHeight())));
 }
 

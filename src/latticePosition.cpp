@@ -2,12 +2,14 @@
 #include "LatticePosition.h"
 
 LatticePosition::LatticePosition() {
+  index = -1;
   x = 0;
   y = 0;
   z = 0;
 }
 
-LatticePosition::LatticePosition(int xArg, int yArg, int zArg) {
+LatticePosition::LatticePosition(int indexArg, int xArg, int yArg, int zArg) {
+  index = indexArg;
   x = xArg;
   y = yArg;
   z = zArg;

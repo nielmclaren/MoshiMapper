@@ -17,10 +17,13 @@ public:
     void drawNeighbors(int x, int y);
     void drawExpandedRhombododdy(int x, int y);
     void drawExpandedNeighbors(int x, int y);
+    void drawNeighborString(LatticePosition* pos, int x, int y);
 private:
 
     int index;
     LatticePosition* pos;
+    ofTrueTypeFont titleFont;
     ofTrueTypeFont labelFont;
+    ofTrueTypeFont neighborFont;
 };
 

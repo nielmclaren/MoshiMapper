@@ -3,7 +3,7 @@
 class LatticePosition {
 public:
     LatticePosition();
-    LatticePosition(int x, int y, int z);
+    LatticePosition(int index, int x, int y, int z);
     ~LatticePosition();
 
     void initNeighbors();
@@ -11,6 +11,7 @@ public:
     void setNeighbor(int face, LatticePosition* pos);
     int neighborCount();
 
+    int index;
     int x;
     int y;
     int z;
