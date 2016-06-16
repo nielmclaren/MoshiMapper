@@ -124,7 +124,7 @@ void NeighborReadout::drawNeighbors(int x, int y) {
 }
 
 void NeighborReadout::drawExpandedRhombododdy(int x, int y) {
-  titleFont.drawString("n" + ofToString(index), x + 58, y + 27);
+  titleFont.drawString("n" + ofToString(pos->index), x + 58, y + 27);
 
   drawRhombododdy(x + 70, y + 75, 80);
   labelFont.drawString("top", x + 140, y + 80);
@@ -228,8 +228,7 @@ void NeighborReadout::drawNeighborString(LatticePosition* pos, int x, int y) {
   neighborFont.drawString("n" + ofToString(pos->index), x, y);
 }
 
-void NeighborReadout::set(int indexArg, LatticePosition* p) {
-  index = indexArg;
+void NeighborReadout::set(LatticePosition* p) {
   pos = p;
 }
 
