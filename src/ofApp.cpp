@@ -24,9 +24,11 @@ void rotateToNormal(ofVec3f normal) {
 void ofApp::setup() {
   ofSetVerticalSync(true);
 
+  selectedIndex = -1;
+  selectedIndexChanged();
+
   setupLighting();
   setupLattice();
-  setupGui();
 
   RhombododdyReport report(&lattice);
   report.save("render.png");
@@ -80,14 +82,6 @@ void ofApp::setupLattice() {
   lattice.setPosition(1, 3, 3, true);
 }
 
-void ofApp::setupGui() {
-  indexSlider.addListener(this, &ofApp::indexSliderChanged);
-
-  gui.setup();
-  gui.add(indexSlider.setup("rhombododdy index", 8, 3, 30));
-  gui.add(screenSizeLabel.setup("screen size", ofToString(ofGetWidth())+"x"+ofToString(ofGetHeight())));
-}
-
 //--------------------------------------------------------------
 void ofApp::update(){
     int w = ofGetWidth();
@@ -128,8 +122,6 @@ void ofApp::draw(){
     ofDisableDepthTest();
     ofDisableLighting();
 
-    gui.draw();
-
     drawNeighborReadout(10, ofGetHeight() - 385);
 }
 
@@ -144,8 +136,8 @@ void ofApp::drawNeighborReadout(int x, int y) {
   neighborReadout.draw(x, y);
 }
 
-void ofApp::indexSliderChanged(int &index){
-  lattice.setSelectedIndex(index);
+void ofApp::selectedIndexChanged() {
+  lattice.setSelectedIndex(selectedIndex);
   neighborReadout.set(lattice.getSelectedPosition());
 }
 
@@ -153,6 +145,14 @@ void ofApp::indexSliderChanged(int &index){
 void ofApp::keyPressed(int key){
   int index;
   switch (key) {
+    case OF_KEY_UP:
+      selectedIndex++;
+      selectedIndexChanged();
+      break;
+    case OF_KEY_DOWN:
+      selectedIndex--;
+      selectedIndexChanged();
+      break;
     case ' ':
       lattice.debug();
       break;

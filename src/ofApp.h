@@ -1,7 +1,6 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxGui.h"
 #include "NeighborReadout.h"
 #include "RhombododdyLattice.h"
 #include "RhombododdyReport.h"
@@ -11,14 +10,13 @@ public:
     void setup();
     void setupLighting();
     void setupLattice();
-    void setupGui();
 
     void update();
 
     void draw();
     void drawNeighborReadout(int x, int y);
 
-    void indexSliderChanged(int& index);
+    void selectedIndexChanged();
 
     void keyPressed(int key);
     void keyReleased(int key);
@@ -34,15 +32,12 @@ public:
 
     ofEasyCam easyCam;
 
+    int selectedIndex;
     RhombododdyLattice lattice;
 
     ofLight pointLight;
     ofLight pointLight2;
     ofLight pointLight3;
-
-    ofxIntSlider indexSlider;
-    ofxLabel screenSizeLabel;
-    ofxPanel gui;
 
     NeighborReadout neighborReadout;
 };

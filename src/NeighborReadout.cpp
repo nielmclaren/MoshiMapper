@@ -10,8 +10,10 @@ NeighborReadout::NeighborReadout() {
 NeighborReadout::~NeighborReadout() {}
 
 void NeighborReadout::draw(int x, int y) {
-  drawExpandedRhombododdy(x, y);
-  drawExpandedNeighbors(x, y);
+  if (pos) {
+    drawExpandedRhombododdy(x, y);
+    drawExpandedNeighbors(x, y);
+  }
 }
 
 void NeighborReadout::drawRhombus(int cx, int cy, int h) {
