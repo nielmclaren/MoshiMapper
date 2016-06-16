@@ -61,9 +61,16 @@ void RhombododdyLattice::setSize(float s) {
   rhombododdy.set(size, 2);
 }
 
+LatticePosition* RhombododdyLattice::getPosition(int index) {
+  if (index < 0 || index >= positions.size()) {
+    return 0;
+  }
+  return positions[index];
+}
+
 LatticePosition* RhombododdyLattice::getPosition(int x, int y, int z) {
   int index = getIndexOfPosition(x, y, z);
-  if (index < 0) {
+  if (index < 0 || index >= positions.size()) {
     return 0;
   }
   return positions[index];
@@ -71,7 +78,7 @@ LatticePosition* RhombododdyLattice::getPosition(int x, int y, int z) {
 
 void RhombododdyLattice::setPosition(int x, int y, int z, bool v) {
   int index = getIndexOfPosition(x, y, z);
-  if (index < 0) {
+  if (index < 0 || index >= positions.size()) {
     if (v) {
       positions.push_back(new LatticePosition(x, y, z));
     }
@@ -81,6 +88,10 @@ void RhombododdyLattice::setPosition(int x, int y, int z, bool v) {
   }
 
   calculateNeighbors();
+}
+
+int RhombododdyLattice::positionCount() {
+  return positions.size();
 }
 
 LatticePosition* RhombododdyLattice::getSelectedPosition() {

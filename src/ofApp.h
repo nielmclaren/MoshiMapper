@@ -4,6 +4,7 @@
 #include "ofxGui.h"
 #include "NeighborReadout.h"
 #include "RhombododdyLattice.h"
+#include "RhombododdyReport.h"
 
 class ofApp : public ofBaseApp {
 public:
@@ -15,6 +16,7 @@ public:
     void update();
 
     void draw();
+    void drawNeighborReadout(int x, int y);
 
     void indexSliderChanged(int& index);
 

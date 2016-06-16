@@ -1,3 +1,4 @@
+#pragma once
 
 #include "ofGraphics.h"
 #include "of3dPrimitives.h"

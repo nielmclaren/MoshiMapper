@@ -27,6 +27,9 @@ void ofApp::setup() {
   setupLighting();
   setupLattice();
   setupGui();
+
+  RhombododdyReport report(&lattice);
+  report.save("render.png");
 }
 
 void ofApp::setupLighting() {
@@ -123,15 +126,27 @@ void ofApp::draw(){
     easyCam.end();
 
     ofDisableDepthTest();
+    ofDisableLighting();
 
     gui.draw();
 
-    neighborReadout.draw(10, ofGetHeight() - 210);
+    drawNeighborReadout(10, ofGetHeight() - 385);
+}
+
+void ofApp::drawNeighborReadout(int x, int y) {
+  ofFill();
+  ofSetColor(255);
+  ofDrawRectangle(x, y, 200, 375);
+  ofSetColor(0);
+  ofDrawRectangle(x + 2, y + 2, 196, 371);
+
+  ofSetColor(255);
+  neighborReadout.draw(x, y);
 }
 
 void ofApp::indexSliderChanged(int &index){
   lattice.setSelectedIndex(index);
-  neighborReadout.set(lattice.getSelectedPosition());
+  neighborReadout.set(index, lattice.getSelectedPosition());
 }
 
 //--------------------------------------------------------------

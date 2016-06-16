@@ -1,3 +1,4 @@
+#pragma once
 
 #include "ofMain.h"
 #include "ofGraphics.h"
@@ -15,8 +16,10 @@ public:
     float getSize();
     void setSize(float size);
 
+    LatticePosition* getPosition(int index);
     LatticePosition* getPosition(int x, int y, int z);
     void setPosition(int x, int y, int z, bool v);
+    int positionCount();
 
     LatticePosition* getSelectedPosition();
     int getSelectedIndex();
