@@ -85,7 +85,7 @@ void IndexInput::mouseReleased(int mouseX, int mouseY, int button) {
 
       if (px < mouseX && mouseX < px + w
           && py < mouseY && mouseY < py + h) {
-        // FIXME: Do a callback function here.
+        indexValue = i;
       }
     }
   }

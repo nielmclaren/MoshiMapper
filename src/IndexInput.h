@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofParameter.h"
 #include "LatticePosition.h"
 #include "RhombododdyLattice.h"
 
@@ -17,6 +18,16 @@ public:
 
     void mouseReleased(int x, int y, int button);
 
+    template<class ListenerClass, typename ListenerMethod>
+    void addListener(ListenerClass * listener, ListenerMethod method){
+      indexValue.addListener(listener,method);
+    }
+
+    template<class ListenerClass, typename ListenerMethod>
+    void removeListener(ListenerClass * listener, ListenerMethod method){
+      indexValue.removeListener(listener,method);
+    }
+
 private:
     bool isSelected(LatticePosition* pos);
     bool isSelectedNeighbor(LatticePosition* pos);
@@ -32,5 +43,7 @@ private:
 
     RhombododdyLattice* lattice;
     LatticePosition* pos;
+
+    ofParameter<int> indexValue;
 };
 

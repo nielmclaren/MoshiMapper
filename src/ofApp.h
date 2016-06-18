@@ -19,6 +19,7 @@ public:
     void drawIndexInput(int x, int y);
     void drawNeighborReadout(int x, int y);
 
+    void indexInputChanged(int &i);
     void selectedIndexChanged();
 
     void keyPressed(int key);

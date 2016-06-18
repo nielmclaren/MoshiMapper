@@ -86,6 +86,7 @@ void ofApp::setupLattice() {
 void ofApp::setupIndexInput() {
   indexInput.set(10, 10, 300, 95);
   indexInput.setLattice(&lattice);
+  indexInput.addListener(this, &ofApp::indexInputChanged);
 }
 
 //--------------------------------------------------------------
@@ -152,6 +153,11 @@ void ofApp::drawNeighborReadout(int x, int y) {
 
   ofSetColor(255);
   neighborReadout.draw(x, y);
+}
+
+void ofApp::indexInputChanged(int &v) {
+  selectedIndex = v;
+  selectedIndexChanged();
 }
 
 void ofApp::selectedIndexChanged() {
