@@ -14,6 +14,9 @@ RhombododdyPrimitive::RhombododdyPrimitive(float size, int res) {
 RhombododdyPrimitive::~RhombododdyPrimitive() {}
 
 void RhombododdyPrimitive::set(float sizeArg, int res) {
+    //
+    // FIXME: This hasn't been updated from ofBoxPrimitive
+    //
     size = sizeArg;
     resolution = res;
 
@@ -769,6 +772,9 @@ void RhombododdyPrimitive::set(float sizeArg) {
 }
 
 vector<ofIndexType> RhombododdyPrimitive::getSideIndices( int sideIndex ) const {
+    //
+    // FIXME: This hasn't been updated from ofBoxPrimitive
+    //
   if(sideIndex < 0 || sideIndex >= SIDES_TOTAL) {
     ofLogWarning("RhombododdyPrimitive") << "getSideIndices(): faceIndex out of bounds, returning SIDE_FRONT";
     sideIndex = SIDE_FRONT;
@@ -778,6 +784,9 @@ vector<ofIndexType> RhombododdyPrimitive::getSideIndices( int sideIndex ) const 
 }
 
 ofMesh RhombododdyPrimitive::getSideMesh(int sideIndex) const {
+    //
+    // FIXME: This hasn't been updated from ofBoxPrimitive
+    //
   if(sideIndex < 0 || sideIndex > SIDES_TOTAL) {
     ofLogWarning("RhombododdyPrimitive") << "getSideMesh(): faceIndex out of bounds, using SIDE_FRONT";
     sideIndex = SIDE_FRONT;
