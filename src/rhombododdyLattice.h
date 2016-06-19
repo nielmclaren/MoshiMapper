@@ -25,7 +25,12 @@ public:
     int getSelectedIndex();
     void setSelectedIndex(int i);
 
+    void getColor(int index);
     void setColor(int index, ofColor color);
+
+    float getWidth();
+    float getHeight();
+    float getDepth();
 
     void debug();
 

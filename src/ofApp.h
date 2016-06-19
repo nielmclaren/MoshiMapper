@@ -38,6 +38,9 @@ public:
 
     int selectedIndex;
     RhombododdyLattice lattice;
+    float latticeWidth;
+    float latticeHeight;
+    float latticeDepth;
 
     ofLight overheadLight;
     ofLight underLight;

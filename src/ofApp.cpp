@@ -82,6 +82,10 @@ void ofApp::setupLattice() {
   lattice.setPosition(0, 3, 3, true);
   lattice.setPosition(1, 3, 3, true);
 
+  latticeWidth = lattice.getWidth();
+  latticeHeight = lattice.getHeight();
+  latticeDepth = lattice.getDepth();
+
   // This is just to test that setting colours is actually working.
   ofColor orange = ofColor::fromHex(0xfde0c6);
   ofColor blue = ofColor::fromHex(0xb5d2fd);
@@ -134,7 +138,10 @@ void ofApp::draw(){
     ofSetColor(0);
     ofDrawGrid(500, 10, false, false, true, false);
 
+    ofPushMatrix();
+    ofTranslate(-latticeWidth/2, 0, -latticeDepth/2);
     lattice.draw();
+    ofPopMatrix();
 
     easyCam.end();
 

@@ -110,8 +110,60 @@ void RhombododdyLattice::setSelectedIndex(int i) {
   selectedIndex = i;
 }
 
+void RhombododdyLattice::getColor(int index) {
+  return positions[index]->color;
+}
+
 void RhombododdyLattice::setColor(int index, ofColor color) {
   positions[index]->color = color;
+}
+
+float RhombododdyLattice::getWidth() {
+  int min = INT_MAX;
+  int max = INT_MIN;
+  for (int i = 0; i < positions.size(); i++) {
+    LatticePosition* p = positions[i];
+    if (p->x < min) {
+      min = p->x;
+    }
+    if (p->x > max) {
+      max = p->x;
+    }
+  }
+
+  return (max - min) * size;
+}
+
+float RhombododdyLattice::getHeight() {
+  int min = INT_MAX;
+  int max = INT_MIN;
+  for (int i = 0; i < positions.size(); i++) {
+    LatticePosition* p = positions[i];
+    if (p->y < min) {
+      min = p->y;
+    }
+    if (p->y > max) {
+      max = p->y;
+    }
+  }
+
+  return (max - min) * size;
+}
+
+float RhombododdyLattice::getDepth() {
+  int min = INT_MAX;
+  int max = INT_MIN;
+  for (int i = 0; i < positions.size(); i++) {
+    LatticePosition* p = positions[i];
+    if (p->z < min) {
+      min = p->z;
+    }
+    if (p->z > max) {
+      max = p->z;
+    }
+  }
+
+  return (max - min) * size;
 }
 
 void RhombododdyLattice::debug() {
