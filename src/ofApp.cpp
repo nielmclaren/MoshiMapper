@@ -81,6 +81,19 @@ void ofApp::setupLattice() {
   lattice.setPosition(3, 3, 2, true);
   lattice.setPosition(0, 3, 3, true);
   lattice.setPosition(1, 3, 3, true);
+
+  // This is just to test that setting colours is actually working.
+  ofColor orange = ofColor::fromHex(0xfde0c6);
+  ofColor blue = ofColor::fromHex(0xb5d2fd);
+  for (int i = 0; i < lattice.positionCount(); i++) {
+    LatticePosition* pos = lattice.getPosition(i);
+    if (i % 2 == 0) {
+      pos->color = orange;
+    }
+    else {
+      pos->color = blue;
+    }
+  }
 }
 
 void ofApp::setupIndexInput() {

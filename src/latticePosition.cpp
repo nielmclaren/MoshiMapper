@@ -6,6 +6,7 @@ LatticePosition::LatticePosition() {
   x = 0;
   y = 0;
   z = 0;
+  color.set(0);
 }
 
 LatticePosition::LatticePosition(int indexArg, int xArg, int yArg, int zArg) {
@@ -13,6 +14,7 @@ LatticePosition::LatticePosition(int indexArg, int xArg, int yArg, int zArg) {
   x = xArg;
   y = yArg;
   z = zArg;
+  color.set(0);
 }
 
 LatticePosition::~LatticePosition() {}

@@ -46,6 +46,7 @@ void RhombododdyLattice::drawRhombododdy(LatticePosition* p) {
     selectedMaterial.end();
   }
   else {
+    normalMaterial.setDiffuseColor(p->color);
     normalMaterial.begin();
     rhombododdy.draw();
     normalMaterial.end();
@@ -107,6 +108,10 @@ int RhombododdyLattice::getSelectedIndex() {
 
 void RhombododdyLattice::setSelectedIndex(int i) {
   selectedIndex = i;
+}
+
+void RhombododdyLattice::setColor(int index, ofColor color) {
+  positions[index]->color = color;
 }
 
 void RhombododdyLattice::debug() {

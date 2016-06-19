@@ -1,5 +1,7 @@
 #pragma once
 
+#include "ofMain.h"
+
 class LatticePosition {
 public:
     LatticePosition();
@@ -15,6 +17,7 @@ public:
     int x;
     int y;
     int z;
+    ofColor color;
 
 private:
     LatticePosition* neighbors[12];

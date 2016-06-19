@@ -25,6 +25,8 @@ public:
     int getSelectedIndex();
     void setSelectedIndex(int i);
 
+    void setColor(int index, ofColor color);
+
     void debug();
 
 protected:
