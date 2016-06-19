@@ -12,11 +12,12 @@ public:
     void draw(int x, int y);
     void setPosition(LatticePosition* p);
 
-    void drawRhombododdy(int x, int y, int h);
-    void drawRhombus(int x, int y, int h);
-    void drawNeighbors(int x, int y);
-    void drawExpandedRhombododdy(int x, int y);
-    void drawExpandedNeighbors(int x, int y);
+    void drawRhombododdy(int x, int y, float h);
+    void drawRhombododdyReadout(int x, int y, float h);
+    void drawRhombus(int x, int y, float h);
+    void drawNeighbors(int x, int y, float h);
+    void drawExpandedRhombododdyReadout(int x, int y, float h);
+    void drawExpandedNeighbors(int x, int y, float h);
     void drawNeighborString(LatticePosition* pos, int x, int y);
 private:
 

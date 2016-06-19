@@ -4,7 +4,7 @@ RhombododdyReport::RhombododdyReport(RhombododdyLattice* latticeArg) {
   lattice = latticeArg;
 
   widthPer = 200;
-  heightPer = 375;
+  heightPer = 250;
 }
 
 RhombododdyReport::~RhombododdyReport() {}

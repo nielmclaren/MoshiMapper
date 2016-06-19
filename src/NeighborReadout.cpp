@@ -10,13 +10,14 @@ NeighborReadout::NeighborReadout() {
 NeighborReadout::~NeighborReadout() {}
 
 void NeighborReadout::draw(int x, int y) {
+  float h = 80;
   if (pos) {
-    drawExpandedRhombododdy(x, y);
-    drawExpandedNeighbors(x, y);
+    drawExpandedRhombododdyReadout(x, y, h);
+    drawExpandedNeighbors(x, y, h);
   }
 }
 
-void NeighborReadout::drawRhombus(int cx, int cy, int h) {
+void NeighborReadout::drawRhombus(int cx, int cy, float h) {
   float w = h / sqrt(2);
 
   ofSetLineWidth(4);
@@ -26,7 +27,7 @@ void NeighborReadout::drawRhombus(int cx, int cy, int h) {
   ofDrawLine(cx - w/2, cy, cx, cy - h/2);
 }
 
-void NeighborReadout::drawRhombododdy(int cx, int cy, int h) {
+void NeighborReadout::drawRhombododdy(int cx, int cy, float h) {
   float w = h / sqrt(2);
 
   ofNoFill();
@@ -52,15 +53,28 @@ void NeighborReadout::drawRhombododdy(int cx, int cy, int h) {
   ofDrawLine(cx + w/2, cy + h/2, cx, cy + h/2);
 }
 
-void NeighborReadout::drawNeighbors(int x, int y) {
+void NeighborReadout::drawRhombododdyReadout(int x, int y, float h) {
+  titleFont.drawString("n" + ofToString(pos->index), x + 93, y + 27);
+
+  drawRhombododdy(x + 100, y + 140, h);
+  labelFont.drawString("top", x + 90, y + 120);
+
+  labelFont.drawString("back", x + 85, y + 55);
+
+  labelFont.drawString("front", x + 85, y + 240);
+
+  labelFont.drawString("left", x + 17, y + 200);
+  labelFont.drawString("right", x + 160, y + 200);
+}
+
+void NeighborReadout::drawNeighbors(int x, int y, float h) {
   int upperRadius = 7;
   int lowerRadius = 13;
 
-  float h = 120;
   float w = h / sqrt(2);
 
   int cx = x + 100;
-  int cy = y + 100;
+  int cy = y + 140;
 
   int offset = 11;
 
@@ -125,31 +139,30 @@ void NeighborReadout::drawNeighbors(int x, int y) {
   }
 }
 
-void NeighborReadout::drawExpandedRhombododdy(int x, int y) {
+void NeighborReadout::drawExpandedRhombododdyReadout(int x, int y, float h) {
   titleFont.drawString("n" + ofToString(pos->index), x + 58, y + 27);
 
-  drawRhombododdy(x + 70, y + 75, 80);
+  drawRhombododdy(x + 70, y + 75, h);
   labelFont.drawString("top", x + 140, y + 80);
 
-  drawRhombus(x + 70, y + 150, 80);
+  drawRhombus(x + 70, y + 150, h);
   labelFont.drawString("front", x + 140, y + 155);
 
-  drawRhombododdy(x + 70, y + 225, 80);
+  drawRhombododdy(x + 70, y + 225, h);
   labelFont.drawString("bottom", x + 140, y + 230);
 
-  drawRhombus(x + 70, y + 300, 80);
+  drawRhombus(x + 70, y + 300, h);
   labelFont.drawString("back", x + 140, y + 305);
 
   labelFont.drawString("left", x + 27, y + 347);
   labelFont.drawString("right", x + 90, y + 347);
 }
 
-void NeighborReadout::drawExpandedNeighbors(int x, int y) {
+void NeighborReadout::drawExpandedNeighbors(int x, int y, float h) {
   LatticePosition* neighbor;
 
   int radius = 7;
 
-  float h = 80;
   float w = h / sqrt(2);
 
   int cx;
