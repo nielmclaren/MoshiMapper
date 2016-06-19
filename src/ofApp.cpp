@@ -37,14 +37,14 @@ void ofApp::setup() {
 
 void ofApp::setupLighting() {
   ofSetSmoothLighting(true);
-  pointLight.setDiffuseColor(ofFloatColor(.85, .85, .55));
-  pointLight.setSpecularColor(ofFloatColor(1.f, 1.f, 1.f));
+  overheadLight.setDiffuseColor(ofFloatColor(.8));
+  overheadLight.setSpecularColor(ofFloatColor(1));
 
-  pointLight2.setDiffuseColor(ofFloatColor( 238.f/255.f, 57.f/255.f, 135.f/255.f));
-  pointLight2.setSpecularColor(ofFloatColor(.8f, .8f, .9f));
+  underLight.setDiffuseColor(ofFloatColor(.6));
+  underLight.setSpecularColor(ofFloatColor(.6));
 
-  pointLight3.setDiffuseColor(ofFloatColor(19.f/255.f,94.f/255.f,77.f/255.f));
-  pointLight3.setSpecularColor(ofFloatColor(18.f/255.f,150.f/255.f,135.f/255.f));
+  angleLight.setDiffuseColor(ofFloatColor(.4));
+  angleLight.setSpecularColor(ofFloatColor(.4));
 }
 
 void ofApp::setupLattice() {
@@ -106,11 +106,10 @@ void ofApp::setupIndexInput() {
 void ofApp::update(){
     int w = ofGetWidth();
     int h = ofGetHeight();
-    float t = ofGetElapsedTimef();
 
-    pointLight.setPosition((w*.5)+ cos(t*.5)*(w*.3), h/2, 500);
-    pointLight2.setPosition((w*.5)+ cos(t*.15)*(w*.3), h*.5 + sin(t*.7)*(h), -300);
-    pointLight3.setPosition(cos(t*1.5) * w*.5, sin(t*1.5f) * w*.5, cos(t*.2) * w);
+    overheadLight.setPosition(0, 500, 0);
+    underLight.setPosition(0, -500, 0);
+    angleLight.setPosition(200, 500, 1500);
 }
 
 //--------------------------------------------------------------
@@ -125,9 +124,9 @@ void ofApp::draw(){
     ofEnableDepthTest();
 
     ofEnableLighting();
-    pointLight.enable();
-    pointLight2.enable();
-    pointLight3.enable();
+    overheadLight.enable();
+    underLight.enable();
+    angleLight.enable();
 
     easyCam.begin();
     ofRotateX(15);

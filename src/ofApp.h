@@ -39,9 +39,9 @@ public:
     int selectedIndex;
     RhombododdyLattice lattice;
 
-    ofLight pointLight;
-    ofLight pointLight2;
-    ofLight pointLight3;
+    ofLight overheadLight;
+    ofLight underLight;
+    ofLight angleLight;
 
     IndexInput indexInput;
     NeighborReadout neighborReadout;
