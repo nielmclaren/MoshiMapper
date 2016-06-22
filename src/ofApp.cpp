@@ -31,6 +31,7 @@ void ofApp::setup() {
   setupLattice();
   setupIndexInput();
   setupStrands();
+  setupLightController();
 
   RhombododdyReport report(&lattice);
   report.save("render.png");
@@ -38,14 +39,18 @@ void ofApp::setup() {
 
 void ofApp::setupLighting() {
   ofSetSmoothLighting(true);
+
   overheadLight.setDiffuseColor(ofFloatColor(.8));
   overheadLight.setSpecularColor(ofFloatColor(1));
+  overheadLight.setPosition(0, 500, 0);
 
   underLight.setDiffuseColor(ofFloatColor(.6));
   underLight.setSpecularColor(ofFloatColor(.6));
+  underLight.setPosition(0, -500, 0);
 
   angleLight.setDiffuseColor(ofFloatColor(.4));
   angleLight.setSpecularColor(ofFloatColor(.4));
+  angleLight.setPosition(200, 500, 1500);
 }
 
 void ofApp::setupLattice() {
@@ -108,21 +113,22 @@ void ofApp::setupIndexInput() {
 }
 
 void ofApp::setupStrands() {
-  phoneStrandCount = 6;
-  phoneStrands = new PhoneStrand[phoneStrandCount];
+  int phoneStrandCount = 6;
   for (int i = 0; i < phoneStrandCount; i++) {
-    phoneStrands[i].setSegmentCount(40);
+    PhoneStrand* strand = new PhoneStrand();
+    strand->setSegmentCount(40);
+    phoneStrands.push_back(strand);
   }
+}
+
+void ofApp::setupLightController() {
+  lightController.setLattice(&lattice);
+  lightController.setStrands(&phoneStrands);
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    int w = ofGetWidth();
-    int h = ofGetHeight();
-
-    overheadLight.setPosition(0, 500, 0);
-    underLight.setPosition(0, -500, 0);
-    angleLight.setPosition(200, 500, 1500);
+  lightController.step();
 }
 
 //--------------------------------------------------------------
@@ -167,12 +173,12 @@ void ofApp::drawStrands() {
   ofPushMatrix();
   ofTranslate(40, 0, 0);
 
-  for (int i = 0; i < phoneStrandCount; i++) {
+  for (int i = 0; i < phoneStrands.size(); i++) {
     ofPushMatrix();
-    ofRotateY(360.0 * i / phoneStrandCount);
+    ofRotateY(360.0 * i / phoneStrands.size());
     ofTranslate(60, 0, 0);
 
-    phoneStrands[i].draw();
+    phoneStrands[i]->draw();
 
     ofPopMatrix();
   }

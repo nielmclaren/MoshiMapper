@@ -10,6 +10,7 @@
 		0546D1A38E13BD319CC9755B /* OscReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9BF3AA0D4FAA89D0F8A0E545 /* OscReceivedElements.cpp */; };
 		1C5094681D12703D0064E7F6 /* RhombododdyReport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5094661D12703D0064E7F6 /* RhombododdyReport.cpp */; };
 		1C5E48441D1A432600B04685 /* PhoneStrands.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5E48431D1A432600B04685 /* PhoneStrands.cpp */; };
+		1C5E48471D1A473000B04685 /* LightController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C5E48451D1A473000B04685 /* LightController.cpp */; };
 		1C898CB41D1295E000BA3F0A /* IndexInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1C898CB21D1295E000BA3F0A /* IndexInput.cpp */; };
 		1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 907C5B5E104864A2D3A25745 /* ofxToggle.cpp */; };
 		1CF002391D10FCC0002E8930 /* LatticePosition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1CF002331D10FCC0002E8930 /* LatticePosition.cpp */; };
@@ -85,6 +86,8 @@
 		1C5094671D12703D0064E7F6 /* RhombododdyReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RhombododdyReport.h; sourceTree = "<group>"; };
 		1C5E48421D1A432600B04685 /* PhoneStrand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneStrand.h; sourceTree = "<group>"; };
 		1C5E48431D1A432600B04685 /* PhoneStrands.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhoneStrands.cpp; sourceTree = "<group>"; };
+		1C5E48451D1A473000B04685 /* LightController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LightController.cpp; sourceTree = "<group>"; };
+		1C5E48461D1A473000B04685 /* LightController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightController.h; sourceTree = "<group>"; };
 		1C898CB21D1295E000BA3F0A /* IndexInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IndexInput.cpp; sourceTree = "<group>"; };
 		1C898CB31D1295E000BA3F0A /* IndexInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexInput.h; sourceTree = "<group>"; };
 		1CF002331D10FCC0002E8930 /* LatticePosition.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LatticePosition.cpp; sourceTree = "<group>"; };
@@ -343,6 +346,8 @@
 				1C898CB31D1295E000BA3F0A /* IndexInput.h */,
 				1CF002331D10FCC0002E8930 /* LatticePosition.cpp */,
 				1CF002341D10FCC0002E8930 /* LatticePosition.h */,
+				1C5E48451D1A473000B04685 /* LightController.cpp */,
+				1C5E48461D1A473000B04685 /* LightController.h */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				1CF002401D11383D002E8930 /* NeighborReadout.cpp */,
 				1CF002411D11383D002E8930 /* NeighborReadout.h */,
@@ -508,6 +513,7 @@
 				0546D1A38E13BD319CC9755B /* OscReceivedElements.cpp in Sources */,
 				879A251454401BC0B6E4F238 /* OscTypes.cpp in Sources */,
 				63B57AC5BF4EF088491E0317 /* ofxXmlSettings.cpp in Sources */,
+				1C5E48471D1A473000B04685 /* LightController.cpp in Sources */,
 				933A2227713C720CEFF80FD9 /* tinyxml.cpp in Sources */,
 				9D44DC88EF9E7991B4A09951 /* tinyxmlerror.cpp in Sources */,
 				1CF002391D10FCC0002E8930 /* LatticePosition.cpp in Sources */,

@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "IndexInput.h"
 #include "NeighborReadout.h"
+#include "LightController.h"
 #include "PhoneStrand.h"
 #include "RhombododdyLattice.h"
 #include "RhombododdyReport.h"
@@ -14,6 +15,7 @@ public:
     void setupLattice();
     void setupIndexInput();
     void setupStrands();
+    void setupLightController();
 
     void update();
 
@@ -52,7 +54,8 @@ public:
     IndexInput indexInput;
     NeighborReadout neighborReadout;
 
-    int phoneStrandCount;
-    PhoneStrand* phoneStrands;
+    std::vector<PhoneStrand*> phoneStrands;
+
+    LightController lightController;
 };
 
