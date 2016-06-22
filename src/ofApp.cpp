@@ -246,7 +246,7 @@ void ofApp::keyPressed(int key){
       selectedIndexChanged();
       break;
     case ' ':
-      lightController.debug();
+      lattice.debug();
       break;
 
     case '1':
