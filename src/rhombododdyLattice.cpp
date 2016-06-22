@@ -12,8 +12,8 @@ RhombododdyLattice::RhombododdyLattice() {
 
 void RhombododdyLattice::initMaterial() {
     // shininess is a value between 0 - 128, 128 being the most shiny //
-    normalMaterial.setShininess( 120 );
-    selectedMaterial.setShininess( 120 );
+    normalMaterial.setShininess(20);
+    selectedMaterial.setShininess(20);
     // the light highlight of the material //
     normalMaterial.setSpecularColor(ofColor(255, 255, 255, 255));
     selectedMaterial.setSpecularColor(ofColor(255, 255, 255, 255));
@@ -46,6 +46,7 @@ void RhombododdyLattice::drawRhombododdy(LatticePosition* p) {
     selectedMaterial.end();
   }
   else {
+    normalMaterial.setSpecularColor(p->color);
     normalMaterial.setDiffuseColor(p->color);
     normalMaterial.begin();
     rhombododdy.draw();

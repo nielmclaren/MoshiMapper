@@ -136,8 +136,9 @@ void ofApp::draw(){
     ofColor cyan = ofColor::fromHex(0x00abec);
     ofColor magenta = ofColor::fromHex(0xec008c);
     ofColor yellow = ofColor::fromHex(0xffee00);
+    ofColor bgColor = ofColor::fromHex(0x333333);
 
-    ofBackgroundGradient(magenta * .6, magenta * .4);
+    ofBackgroundGradient(bgColor * 0.6, bgColor * 0.4);
     ofNoFill();
 
     ofEnableDepthTest();

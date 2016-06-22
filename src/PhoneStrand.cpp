@@ -9,9 +9,6 @@ PhoneStrand::~PhoneStrand() {}
 
 void PhoneStrand::draw() {
   float segmentLength = 3;
-  int segmentCount = 50;
-
-  float slopage = 1.4;
 
   ofSetLineWidth(16);
 
