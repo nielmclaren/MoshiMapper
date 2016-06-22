@@ -32,6 +32,7 @@ void ofApp::setup() {
   setupIndexInput();
   setupStrands();
   setupLightController();
+  setupIsKeyDown();
 
   RhombododdyReport report(&lattice);
   report.save("render.png");
@@ -126,8 +127,21 @@ void ofApp::setupLightController() {
   lightController.setStrands(&phoneStrands);
 }
 
+void ofApp::setupIsKeyDown() {
+  isKeyDown = new bool[6];
+  for (int i = 0; i < 6; i++) {
+    isKeyDown[i] = 0;
+  }
+}
+
 //--------------------------------------------------------------
-void ofApp::update(){
+void ofApp::update() {
+  float input[6];
+  for (int i = 0; i < 6; i++) {
+    input[i] = isKeyDown[i] ? ofRandom(0.5, 1) : 0;
+  }
+
+  lightController.input(input);
   lightController.step();
 }
 
@@ -176,7 +190,7 @@ void ofApp::drawStrands() {
 
   for (int i = 0; i < phoneStrands.size(); i++) {
     ofPushMatrix();
-    ofRotateY(360.0 * i / phoneStrands.size());
+    ofRotateY(17 + 360.0 * i / phoneStrands.size());
     ofTranslate(60, 0, 0);
 
     phoneStrands[i]->draw();
@@ -232,14 +246,32 @@ void ofApp::keyPressed(int key){
       selectedIndexChanged();
       break;
     case ' ':
-      lattice.debug();
+      lightController.debug();
+      break;
+
+    case '1':
+    case '2':
+    case '3':
+    case '4':
+    case '5':
+    case '6':
+      isKeyDown[key - '1'] = true;
       break;
   }
 }
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-
+  switch (key) {
+    case '1':
+    case '2':
+    case '3':
+    case '4':
+    case '5':
+    case '6':
+      isKeyDown[key - '1'] = false;
+      break;
+  }
 }
 
 //--------------------------------------------------------------

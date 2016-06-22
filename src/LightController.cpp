@@ -7,6 +7,9 @@ LightController::LightController() {
 
   hasLattice = false;
   hasStrands = false;
+
+  numChannels = 6;
+  maxInputHistoryCount = 100;
 }
 
 LightController::~LightController() {}
@@ -33,15 +36,36 @@ void LightController::stepLattice() {
   }
 }
 
-void LightController::stepStrand(int index, PhoneStrand* strand) {
+void LightController::stepStrand(int strandIndex, PhoneStrand* strand) {
   float t = modTime(10000);
 
   ofColor pink = ofColor::fromHex(0xf3399e);
   ofColor blue = ofColor::fromHex(0x274f8c);
+  ofColor highlight = ofColor::fromHex(0xd5a1b7);
 
   int segmentCount = strand->getSegmentCount();
   for (int i = 0; i < segmentCount; i++) {
-    strand->setColor(i, blue.getLerped(pink, splitTime(clampTime(t - i * 0.01))));
+    ofColor baseColor = blue.getLerped(pink, splitTime(clampTime(t - i * 0.01)));
+    float v = getStrandSegmentValue(strandIndex, i, segmentCount);
+    strand->setColor(i, baseColor.getLerped(highlight, v));
+  }
+}
+
+float LightController::getStrandSegmentValue(int strandIndex, int segmentIndex, int segmentCount) {
+  int historyIndex = floor((float)segmentIndex / segmentCount * inputHistory[strandIndex].size());
+  return getInputHistoryValue(strandIndex, historyIndex);
+}
+
+float LightController::getInputHistoryValue(int strandIndex, int historyIndex) {
+  return inputHistory[strandIndex][historyIndex];
+}
+
+void LightController::input(float* input) {
+  for (int i = 0; i < numChannels; i++) {
+    inputHistory[i].push_back(input[i]);
+    while (inputHistory[i].size() > maxInputHistoryCount) {
+      inputHistory[i].pop_front();
+    }
   }
 }
 

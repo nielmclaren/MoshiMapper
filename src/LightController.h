@@ -13,10 +13,15 @@ public:
     void stepLattice();
     void stepStrand(int index, PhoneStrand* strand);
 
+    void input(float* input);
+
     void setLattice(RhombododdyLattice* lattice);
     void setStrands(std::vector<PhoneStrand*>*);
 
 private:
+    float getStrandSegmentValue(int strandIndex, int segmentIndex, int segmentCount);
+    float getInputHistoryValue(int strandIndex, int segmentIndex);
+
     float modTime(int duration);
     float splitTime(float t);
     float clampTime(float t);
@@ -25,5 +30,9 @@ private:
     bool hasStrands;
     RhombododdyLattice* lattice;
     std::vector<PhoneStrand*>* strands;
+
+    int numChannels;
+    std::array<std::deque<float>, 6> inputHistory;
+    int maxInputHistoryCount;
 };
 

@@ -16,6 +16,7 @@ public:
     void setupIndexInput();
     void setupStrands();
     void setupLightController();
+    void setupIsKeyDown();
 
     void update();
 
@@ -57,5 +58,7 @@ public:
     std::vector<PhoneStrand*> phoneStrands;
 
     LightController lightController;
+
+    bool* isKeyDown;
 };
 
