@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "IndexInput.h"
 #include "NeighborReadout.h"
+#include "PhoneStrand.h"
 #include "RhombododdyLattice.h"
 #include "RhombododdyReport.h"
 
@@ -12,12 +13,14 @@ public:
     void setupLighting();
     void setupLattice();
     void setupIndexInput();
+    void setupStrands();
 
     void update();
 
     void draw();
     void drawIndexInput(int x, int y);
     void drawNeighborReadout(int x, int y);
+    void drawStrands();
 
     void indexInputChanged(int &i);
     void selectedIndexChanged();
@@ -48,5 +51,8 @@ public:
 
     IndexInput indexInput;
     NeighborReadout neighborReadout;
+
+    int phoneStrandCount;
+    PhoneStrand* phoneStrands;
 };
 

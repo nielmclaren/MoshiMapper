@@ -30,6 +30,7 @@ void ofApp::setup() {
   setupLighting();
   setupLattice();
   setupIndexInput();
+  setupStrands();
 
   RhombododdyReport report(&lattice);
   report.save("render.png");
@@ -106,6 +107,14 @@ void ofApp::setupIndexInput() {
   indexInput.addListener(this, &ofApp::indexInputChanged);
 }
 
+void ofApp::setupStrands() {
+  phoneStrandCount = 6;
+  phoneStrands = new PhoneStrand[phoneStrandCount];
+  for (int i = 0; i < phoneStrandCount; i++) {
+    phoneStrands[i].setSegmentCount(40);
+  }
+}
+
 //--------------------------------------------------------------
 void ofApp::update(){
     int w = ofGetWidth();
@@ -143,6 +152,8 @@ void ofApp::draw(){
     lattice.draw();
     ofPopMatrix();
 
+    drawStrands();
+
     easyCam.end();
 
     ofDisableDepthTest();
@@ -150,6 +161,22 @@ void ofApp::draw(){
 
     drawIndexInput(10, 10);
     drawNeighborReadout(10, ofGetHeight() - 385);
+}
+
+void ofApp::drawStrands() {
+  ofPushMatrix();
+  ofTranslate(40, 0, 0);
+
+  for (int i = 0; i < phoneStrandCount; i++) {
+    ofPushMatrix();
+    ofRotateY(360.0 * i / phoneStrandCount);
+    ofTranslate(60, 0, 0);
+
+    phoneStrands[i].draw();
+
+    ofPopMatrix();
+  }
+  ofPopMatrix();
 }
 
 void ofApp::drawIndexInput(int x, int y) {
