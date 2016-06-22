@@ -9,7 +9,7 @@ LightController::LightController() {
   hasStrands = false;
 
   numChannels = 6;
-  maxInputHistoryCount = 100;
+  strandDelayMs = 1500;
 }
 
 LightController::~LightController() {}
@@ -46,14 +46,25 @@ void LightController::stepStrand(int strandIndex, PhoneStrand* strand) {
   int segmentCount = strand->getSegmentCount();
   for (int i = 0; i < segmentCount; i++) {
     ofColor baseColor = blue.getLerped(pink, splitTime(clampTime(t - i * 0.01)));
-    float v = getStrandSegmentValue(strandIndex, i, segmentCount);
+    float v = getStrandSegmentValue(strandIndex, segmentCount - i - 1, segmentCount);
     strand->setColor(i, baseColor.getLerped(highlight, v));
   }
 }
 
 float LightController::getStrandSegmentValue(int strandIndex, int segmentIndex, int segmentCount) {
-  int historyIndex = floor((float)segmentIndex / segmentCount * inputHistory[strandIndex].size());
-  return getInputHistoryValue(strandIndex, historyIndex);
+  int targetDelayMs = floor((float)segmentIndex / segmentCount * strandDelayMs);
+  int historyIndex = getInputHistoryIndexByDelay(targetDelayMs);
+  return historyIndex >= 0 ? getInputHistoryValue(strandIndex, historyIndex) : 0;
+}
+
+int LightController::getInputHistoryIndexByDelay(int delayMs) {
+  unsigned long now = ofGetElapsedTimeMillis();
+  for (int i = 0; i < inputHistoryTimings.size(); i++) {
+    if (inputHistoryTimings[i] > now - delayMs) {
+      return i;
+    }
+  }
+  return -1;
 }
 
 float LightController::getInputHistoryValue(int strandIndex, int historyIndex) {
@@ -61,9 +72,16 @@ float LightController::getInputHistoryValue(int strandIndex, int historyIndex) {
 }
 
 void LightController::input(float* input) {
+  unsigned long now = ofGetElapsedTimeMillis();
+  inputHistoryTimings.push_back(now);
   for (int i = 0; i < numChannels; i++) {
     inputHistory[i].push_back(input[i]);
-    while (inputHistory[i].size() > maxInputHistoryCount) {
+  }
+
+  while (inputHistoryTimings.size() > 0
+      && inputHistoryTimings.front() < now - strandDelayMs) {
+    inputHistoryTimings.pop_front();
+    for (int i = 0; i < numChannels; i++) {
       inputHistory[i].pop_front();
     }
   }

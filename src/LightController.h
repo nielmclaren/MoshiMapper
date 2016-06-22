@@ -20,6 +20,7 @@ public:
 
 private:
     float getStrandSegmentValue(int strandIndex, int segmentIndex, int segmentCount);
+    int getInputHistoryIndexByDelay(int delayMs);
     float getInputHistoryValue(int strandIndex, int segmentIndex);
 
     float modTime(int duration);
@@ -33,6 +34,8 @@ private:
 
     int numChannels;
     std::array<std::deque<float>, 6> inputHistory;
-    int maxInputHistoryCount;
+    std::deque<unsigned long> inputHistoryTimings;
+
+    int strandDelayMs;
 };
 
